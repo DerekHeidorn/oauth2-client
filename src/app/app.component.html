@@ -1,9 +1,9 @@
 <div id="wrapper">
   <div id="header-wrapper">
       <div id="header">
-          <div style="text-align:right; padding: 10px">
-            <a *ngIf="!authService.isLoggedIn" (click)="authService.login()">Log In</a>
-            <a *ngIf="authService.isLoggedIn" (click)="authService.logout()">Log Out</a>
+          <div style="text-align:right; padding: 5px">
+            <a *ngIf="!authService.isLoggedIn()" href="http://localhost:9000/login">Log In</a>
+            <a *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Log Out</a>
           </div>
           <div id="logo">
               <h1><a href="#">oauth2 Project</a></h1>
@@ -12,25 +12,19 @@
       </div>
   </div>
 	<div id="menu">
-		
+  		<ul>
+          <li><a routerLink="/">Home</a></li>
+          <li> <a routerLink="/customers">Customers</a></li>
+        </ul>
 	</div>
   <div id="page">
           <br/>
-          <p>This web Application written using Python. </p> 
-
-          <p>It uses these frameworks and databases:</p>
-          <ul>
-              <li>Flask - is a micro web framework written in Python</li>
-              <li>SqlAlchemy - is an open source SQL toolkit and object-relational mapper (ORM) for the Python programming language</li>
-              <li>Postgresql - is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards compliance</li>
-          </ul>
+          <router-outlet></router-outlet>
           <br/>
-          <h3>Customers:</h3>
-          <app-customers></app-customers>
   </div>
 </div>
 <div id="footer">
   <p>Stylesheet Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
 </div>
 
-<router-outlet></router-outlet>
+
