@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { CustomersComponent } from './components/customers/customers.component';
+import { AuthCallbackComponent } from './components/auth/auth-callback.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {
-    path: 'customers',
-    component: CustomersComponent,
-    // Add this to guard this route
-    canActivate: [
-      AuthGuard
-    ]
-  }
-  , { path: 'oauth/callback', component: CustomersComponent}
+  { path: '', component: HomeComponent},
+  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard]},
+  { path: 'oauth/callback', component: AuthCallbackComponent}
 ];
 
 @NgModule({

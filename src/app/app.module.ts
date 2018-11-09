@@ -7,14 +7,18 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { AuthenticationService } from './services/authentication.service';
+import { AuthCallbackComponent } from './components/auth/auth-callback.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomersComponent
+    HomeComponent,
+    CustomersComponent,
+    AuthCallbackComponent
   ],
   imports: [
     BrowserModule,

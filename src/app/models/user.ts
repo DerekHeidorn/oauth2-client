@@ -1,7 +1,4 @@
 export class User {
-    id: number;
+    uuid: string;
     username: string;
-    firstName: string;
-    lastName: string;
-    token: string;
 }

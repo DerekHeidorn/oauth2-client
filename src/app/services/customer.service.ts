@@ -4,12 +4,14 @@ import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Customer } from '../models/customer';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
-  private allCustomersUrl = 'http://127.0.0.1:9001/api/v1.0/admin/user';
+  private allCustomersUrl = 'http://127.0.0.1:9000/api/v1.0/admin/user';
+  
 
   constructor(
               private http: HttpClient
@@ -23,6 +25,8 @@ export class CustomerService {
         catchError(this.handleError)
       );
   }
+
+
 
   // Implement a method to handle errors if any
   private handleError(err: HttpErrorResponse | any) {

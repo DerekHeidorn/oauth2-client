@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth/auth.service';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ import { AuthService } from './auth/auth.service';
 
 export class AppComponent {
   title = 'oauth2 project';
-  constructor(public authService: AuthService) {}
+  constructor(public authenticationService: AuthenticationService, 
+              public userService: UserService) {}
 }

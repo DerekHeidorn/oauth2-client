@@ -2,8 +2,10 @@
   <div id="header-wrapper">
       <div id="header">
           <div style="text-align:right; padding: 5px">
-            <a *ngIf="!authService.isLoggedIn()" href="http://localhost:9000/login">Log In</a>
-            <a *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Log Out</a>
+            <a *ngIf="!authenticationService.isLoggedIn()" href="http://localhost:9000/login">Log In</a>
+
+            <a *ngIf="authenticationService.isLoggedIn()">--{{userService.currentUserValue.username}}--</a> 
+            <a *ngIf="authenticationService.isLoggedIn()" (click)="authenticationService.logout()">Log Out</a>
           </div>
           <div id="logo">
               <h1><a href="#">oauth2 Project</a></h1>
