@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { AuthenticationService } from './services/authentication.service';
-import { UserService } from './services/user.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +7,15 @@ import { UserService } from './services/user.service';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'oauth2 project';
-  constructor(public authenticationService: AuthenticationService, 
-              public userService: UserService) {}
+
+  constructor() {}
+
+  ngOnInit() {
+
+
+
+
+  }
 }

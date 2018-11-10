@@ -11,6 +11,9 @@ import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthCallbackComponent } from './components/auth/auth-callback.component';
+import { HeaderComponent } from './components/common/header/header.component';
+import { FooterComponent } from './components/common/footer/footer.component';
+import { MenuComponent } from './components/common/menu/menu.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { AuthCallbackComponent } from './components/auth/auth-callback.component
     AppComponent,
     HomeComponent,
     CustomersComponent,
-    AuthCallbackComponent
+    AuthCallbackComponent,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -29,29 +29,31 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  fetchCurrentUser() {
-    let tokenValue:UserToken = this.authenticationService.currentTokenValue
-    console.log("fetchCurrentUser->user_uuid=" + tokenValue.uuid);
-    if(tokenValue && tokenValue.uuid ) {
-     
-      let error;
-      let u: User;
-      
-      this.http.get<User>(this.getPublicUserUrl+ "/" + tokenValue.uuid)
-                  .subscribe((data: User) => {
-                    console.log("data=" + data);
-                    if(data != null && data.uuid != null) {
-                      localStorage.setItem('currentUser', JSON.stringify(data));
-                      this.currentUserSubject.next(data);
-                    }
-                  }, // success path
-                  error => error = error // error path
-                  );
-    }
-
-
+  fetchCurrentUser(user_uuid: string) {
+    console.log("fetchCurrentUser->user_uuid=" + user_uuid);
+    // let tokenValue:UserToken = this.authenticationService.currentTokenValue
+    
+    return this.http.get<User>(this.getPublicUserUrl+ "/" + user_uuid)
   }
 
+  saveCurrentUser(user: User) {
+      console.log("saveCurrentUser->user_uuid=" + user.uuid);
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.currentUserSubject.next(user);
+  }
+
+  saveCurrentUserByData(user_uuid:string, username:string) {
+    let user: User = new User()
+    user.uuid = user_uuid;
+    user.username = username;
+    this.saveCurrentUser(user)
+  } 
+  clearCurrentUser() {
+    // remove user from local storage to log user out
+    this.currentUserSubject.next(null);
+    localStorage.removeItem('currentUser');
+  }
   fetchCurrentUser2(user_uuid: string) {
     console.log("fetchCurrentUser->user_uuid=" + user_uuid);
     return this.http.get<any>(this.getPublicUserUrl+ "/" + user_uuid)

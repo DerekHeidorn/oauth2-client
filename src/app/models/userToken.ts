@@ -1,4 +1,4 @@
 export class UserToken {
-    uuid: string;
+    user_uuid: string;
     token: string;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UserService } from '../../services/user.service';
+import { UserToken } from '../../models/userToken';
 import * as jwt_decode from "jwt-decode";
 
 
@@ -41,21 +42,27 @@ export class AuthCallbackComponent implements OnInit {
     console.log(tokenInfo.sub); 
     console.log("expireDate=" + expireDate);
 
+    let userToken: UserToken = new UserToken();
+    userToken.token = access_token
+    userToken.user_uuid = tokenInfo.sub
+
     // save the token locally
-    this.authenticationService.saveToken({"user_uuid": tokenInfo.sub, 
-                                          "token": access_token })
+    this.authenticationService.saveToken(userToken)
 
-    // get the user information
-    if(tokenInfo != null && tokenInfo.sub != null) {
-      console.log("fetchCurrentUser=" + tokenInfo.sub);
-      this.userService.fetchCurrentUser(tokenInfo.sub)
-    }
-
+    // this.headerComponent.isLoggedIn = true;
+    // this.fetchUser(userToken.user_uuid)
 
 
     this.router.navigateByUrl("/")
 
-    
+  }
+
+  fetchUser(user_uuid:string) {
+    this.userService.fetchCurrentUser(user_uuid)
+      .subscribe((data) => {
+        this.userService.saveCurrentUserByData(user_uuid, data['username']);
+        this.router.navigateByUrl("/");
+      });
   }
 
   getDecodedAccessToken(token: string): any {

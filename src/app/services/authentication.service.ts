@@ -10,12 +10,14 @@ import { UserToken } from '../models/userToken';
 export class AuthenticationService {
 
   private currentTokenSubject: BehaviorSubject<UserToken>;
+  public currentToken: Observable<UserToken>;
 
 
   constructor(private http: HttpClient) {
       this.currentTokenSubject = new BehaviorSubject<UserToken>(
             JSON.parse(localStorage.getItem('currentToken'))
           );
+      this.currentToken = this.currentTokenSubject.asObservable();
   }
 
   public get currentTokenValue(): UserToken {
@@ -27,9 +29,9 @@ export class AuthenticationService {
     }
 
     saveToken(token) {
-
-        localStorage.setItem('currentToken', JSON.stringify(token));
         this.currentTokenSubject.next(token);
+        localStorage.setItem('currentToken', JSON.stringify(token));
+        
     }
 
   // login(username: string, password: string) {
@@ -48,7 +50,7 @@ export class AuthenticationService {
 
   logout() {
       // remove user from local storage to log user out
-      localStorage.removeItem('currentToken');
       this.currentTokenSubject.next(null);
+      localStorage.removeItem('currentToken');
   }
 }

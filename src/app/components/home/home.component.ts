@@ -5,6 +5,7 @@ import { User } from '../../models/user';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UserService } from '../../services/user.service';
 
+
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
@@ -22,7 +23,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
 
-        this.userService.fetchCurrentUser()
         //this.loadAllUsers();
     }
 

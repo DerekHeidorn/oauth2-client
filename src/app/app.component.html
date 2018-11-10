@@ -1,32 +1,27 @@
 <div id="wrapper">
   <div id="header-wrapper">
+      <!-- header -->
       <div id="header">
-          <div style="text-align:right; padding: 5px">
-            <a *ngIf="!authenticationService.isLoggedIn()" href="http://localhost:9000/login">Log In</a>
-
-            <a *ngIf="authenticationService.isLoggedIn()">--{{userService.currentUserValue.username}}--</a> 
-            <a *ngIf="authenticationService.isLoggedIn()" (click)="authenticationService.logout()">Log Out</a>
-          </div>
+        <app-header></app-header>
           <div id="logo">
               <h1><a href="#">oauth2 Project</a></h1>
               <p>Application using JWT and OAuth2</p>
           </div>
       </div>
   </div>
+
 	<div id="menu">
-  		<ul>
-          <li><a routerLink="/">Home</a></li>
-          <li> <a routerLink="/customers">Customers</a></li>
-        </ul>
+  		<app-menu></app-menu>
 	</div>
   <div id="page">
-          <br/>
-          <router-outlet></router-outlet>
-          <br/>
+      <br/>
+      <router-outlet></router-outlet>
+      <br/>
   </div>
 </div>
 <div id="footer">
-  <p>Stylesheet Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+      <!-- footer -->
+      <app-footer></app-footer>
 </div>
 
 
