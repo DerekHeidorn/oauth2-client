@@ -49,20 +49,8 @@ export class AuthCallbackComponent implements OnInit {
     // save the token locally
     this.authenticationService.saveToken(userToken)
 
-    // this.headerComponent.isLoggedIn = true;
-    // this.fetchUser(userToken.user_uuid)
-
-
     this.router.navigateByUrl("/")
 
-  }
-
-  fetchUser(user_uuid:string) {
-    this.userService.fetchCurrentUser(user_uuid)
-      .subscribe((data) => {
-        this.userService.saveCurrentUserByData(user_uuid, data['username']);
-        this.router.navigateByUrl("/");
-      });
   }
 
   getDecodedAccessToken(token: string): any {

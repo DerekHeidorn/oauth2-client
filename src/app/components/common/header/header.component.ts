@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { UserService } from '../../../services/user.service';
 import { UserToken } from '../../../models/userToken';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -11,32 +12,36 @@ import { UserToken } from '../../../models/userToken';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn: Boolean = false;
-  username:String = null;
+  userToken:UserToken = null;
+  user:User = null;
 
   constructor(private authenticationService: AuthenticationService,
-              public userService: UserService) { }
+              public userService: UserService) { 
+
+                authenticationService.currentToken.subscribe((userToken:UserToken) => {
+                  this.userToken = userToken
+                });
+
+                userService.currentUser.subscribe((user:User) => {
+                  console.log("HeaderComponent->constructor:user" + user)
+                  this.user = user
+                });
+              }
 
   ngOnInit() {
-    let tokenValue:UserToken = this.authenticationService.currentTokenValue
-    console.log("HeaderComponent->ngOnInit->=" + tokenValue);
-    if(tokenValue && tokenValue.user_uuid) {
-      this.isLoggedIn = this.authenticationService.isLoggedIn()
-      this.userService.fetchCurrentUser(tokenValue.user_uuid)
-      .subscribe((data) => {
-        this.userService.saveCurrentUserByData(tokenValue.user_uuid, data['username']);
-        this.username =  data['username']
-      });
-    } else {
-      this.userService.clearCurrentUser()
-    }
-  }
 
+  }
+  isLoggedIn() {
+    if(this.user && this.user.uuid) {
+      return true;
+    }
+    return false;
+  }
 
   logout() {
     this.userService.clearCurrentUser()
     this.authenticationService.logout()
-    this.isLoggedIn = false;
-    this.username = null;
+    // this.isLoggedIn = false;
+    // this.username = null;
   }
 }

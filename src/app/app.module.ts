@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
 import { AuthCallbackComponent } from './components/auth/auth-callback.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
@@ -32,7 +33,7 @@ import { MenuComponent } from './components/common/menu/menu.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService,
+  providers: [AuthenticationService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

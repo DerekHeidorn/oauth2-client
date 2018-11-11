@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { throwError } from 'rxjs';
 import { User } from '../models/user';
-import { map } from 'rxjs/operators';
-import { AuthenticationService } from './authentication.service';
-import { UserToken } from '../models/userToken';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +16,7 @@ export class UserService {
   public currentUser: Observable<User>;
 
   constructor(
-      private http: HttpClient, 
-      private authenticationService: AuthenticationService
+      private http: HttpClient
     ) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -27,13 +24,6 @@ export class UserService {
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
-  }
-
-  fetchCurrentUser(user_uuid: string) {
-    console.log("fetchCurrentUser->user_uuid=" + user_uuid);
-    // let tokenValue:UserToken = this.authenticationService.currentTokenValue
-    
-    return this.http.get<User>(this.getPublicUserUrl+ "/" + user_uuid)
   }
 
   saveCurrentUser(user: User) {
@@ -44,6 +34,8 @@ export class UserService {
   }
 
   saveCurrentUserByData(user_uuid:string, username:string) {
+    console.log("saveCurrentUserByData->user_uuid=" + user_uuid);
+    console.log("saveCurrentUserByData->username=" + username);
     let user: User = new User()
     user.uuid = user_uuid;
     user.username = username;
@@ -54,20 +46,9 @@ export class UserService {
     this.currentUserSubject.next(null);
     localStorage.removeItem('currentUser');
   }
-  fetchCurrentUser2(user_uuid: string) {
-    console.log("fetchCurrentUser->user_uuid=" + user_uuid);
-    return this.http.get<any>(this.getPublicUserUrl+ "/" + user_uuid)
-        .pipe(map(user => {
-            // get successful user
-            console.log("user=" + user);
-            if (user && user.uuid) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-            }
 
-            return user;
-        }));
+  fetchCurrentUser(user_uuid: string) {
+    return this.http.get<any>(this.getPublicUserUrl+ "/" + user_uuid);
   }
 
   // Implement a method to handle errors if any

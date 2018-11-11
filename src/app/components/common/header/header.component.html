@@ -1,8 +1,8 @@
 
 <div style="text-align:right; padding: 5px">
-  <a *ngIf="!isLoggedIn" href="http://localhost:9000/login">Log In</a>
+  <a *ngIf="!(user && user.username)" href="http://localhost:9000/login">Log In</a>
 
-  <a *ngIf="isLoggedIn">--{{username}}--</a> 
-  <a *ngIf="isLoggedIn" (click)="logout()">Log Out</a>
+  <a *ngIf="user && user.username">--{{user.username}}--</a> 
+  <a *ngIf="user && user.username" (click)="logout()">Log Out</a>
 </div>
 
