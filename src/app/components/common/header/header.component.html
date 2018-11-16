@@ -1,8 +1,12 @@
 
 <div style="text-align:right; padding: 5px">
-  <a *ngIf="!(user && user.username)" href="http://localhost:9000/login">Log In</a>
+  <span *ngIf="!(user && user.username)">
+    [<a href="http://localhost:9000/login">Log In</a>]
+  </span>
 
-  <a *ngIf="user && user.username">--{{user.username}}--</a> 
-  <a *ngIf="user && user.username" (click)="logout()">Log Out</a>
+  <span *ngIf="user && user.username">
+    [<a routerLink="/profile">{{user.username}}</a>] 
+    [<a *ngIf="user && user.username" (click)="logout()">Log Out</a>]
+  </span>
 </div>
 

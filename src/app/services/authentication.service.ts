@@ -30,11 +30,12 @@ export class AuthenticationService {
         console.log("currentTokenSubject.next().token=" + token)
         if(token.user_uuid) {
             console.log("currentTokenSubject.next().token.user_uuid=" + token.user_uuid)
+            console.log("currentTokenSubject.next().token.token=" + token.token)
         }
         this.currentTokenSubject.next(token);
         localStorage.setItem('currentToken', JSON.stringify(token));
 
-        this.userService.fetchCurrentUser(token.user_uuid)
+        this.userService.fetchCurrentUser()
             .subscribe((data) => {
                 console.log("saveToken.next()..subscribe::token.user_uuid=" + token.user_uuid)
                 console.log("saveToken.next()..subscribe::data['username']=" + data['username'])

@@ -10,7 +10,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  private getPublicUserUrl = 'http://127.0.0.1:9000/api/v1.0/public/user';
+  private getPublicUserUrl = 'http://127.0.0.1:9000/api/v1.0/public/account/';
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -47,8 +47,12 @@ export class UserService {
     localStorage.removeItem('currentUser');
   }
 
-  fetchCurrentUser(user_uuid: string) {
-    return this.http.get<any>(this.getPublicUserUrl+ "/" + user_uuid);
+  fetchCurrentUser() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/account/');
+  }
+
+  fetchCurrentUserProfile() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/account/profile/');
   }
 
   // Implement a method to handle errors if any

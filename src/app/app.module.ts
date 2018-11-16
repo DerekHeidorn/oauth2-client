@@ -15,6 +15,7 @@ import { AuthCallbackComponent } from './components/auth/auth-callback.component
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { MenuComponent } from './components/common/menu/menu.component';
+import { ProfileComponent } from './components/common/profile/profile.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MenuComponent } from './components/common/menu/menu.component';
     AuthCallbackComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
