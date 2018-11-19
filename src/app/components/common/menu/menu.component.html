@@ -1,4 +1,5 @@
 <ul>
     <li><a routerLink="/">Home</a></li>
-    <li> <a routerLink="/customers">Customers</a></li>
+    <li *ngIf="hasAuthority('CUST_ACCESS') || hasAuthority('STAFF_ACCESS')"> <a routerLink="/groups">Groups</a></li>
+    <li *ngIf="hasAuthority('STAFF_ACCESS')"> <a routerLink="/customers">Customers</a></li>
 </ul>

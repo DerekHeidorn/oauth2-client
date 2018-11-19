@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UserService } from '../../services/user.service';
 import { UserToken } from '../../models/userToken';
-import * as jwt_decode from "jwt-decode";
+
 
 
 
@@ -35,7 +35,7 @@ export class AuthCallbackComponent implements OnInit {
     console.log("expires_in=" + expires_in)
     
 
-    let tokenInfo = this.getDecodedAccessToken(access_token); // decode token
+    let tokenInfo = this.authenticationService.getDecodedAccessToken(access_token); // decode token
     let expireDate = tokenInfo.exp; // get token expiration dateTime
     console.log(tokenInfo); // show decoded token object in console
     console.log(tokenInfo.auth); 
@@ -53,12 +53,5 @@ export class AuthCallbackComponent implements OnInit {
 
   }
 
-  getDecodedAccessToken(token: string): any {
-    try{
-        return jwt_decode(token);
-    }
-    catch(Error){
-        return null;
-    }
-  }
+
 }

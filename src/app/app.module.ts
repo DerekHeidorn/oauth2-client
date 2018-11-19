@@ -16,6 +16,8 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { MenuComponent } from './components/common/menu/menu.component';
 import { ProfileComponent } from './components/common/profile/profile.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { GroupComponent } from './components/group/group.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ProfileComponent } from './components/common/profile/profile.component'
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    ProfileComponent
+    ProfileComponent,
+    GroupsComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,

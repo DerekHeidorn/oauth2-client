@@ -9,11 +9,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CustomersComponent implements OnInit {
 
-  customer: Customer = {
-    id: 1,
-    name: 'Mister Customer',
-    username: 'foo@bar.com'
-  };
+  customer: Customer[] = [];
 
   constructor(private customerService: CustomerService) { }
 
