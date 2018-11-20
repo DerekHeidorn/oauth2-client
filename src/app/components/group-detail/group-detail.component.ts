@@ -4,14 +4,13 @@ import { Group, GroupDetail } from '../../models/group';
 import { GroupService } from '../../services/group.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { AppResponse } from '../../models/response';
 
 @Component({
-  selector: 'app-group',
-  templateUrl: './group.component.html',
-  styleUrls: ['./group.component.css']
+  selector: 'app-group-detail',
+  templateUrl: './group-detail.component.html',
+  styleUrls: ['./group-detail.component.css']
 })
-export class GroupComponent implements OnInit {
+export class GroupDetailComponent implements OnInit {
 
   public detail: GroupDetail = new GroupDetail();
 
@@ -44,6 +43,12 @@ export class GroupComponent implements OnInit {
               if(active_managers[i].nick_name)  {
                 user.nick_name = active_managers[i].nick_name;
               }
+              if(active_managers[i].first_name)  {
+                user.first_name = active_managers[i].first_name;
+              }
+              if(active_managers[i].last_name)  {
+                user.last_name = active_managers[i].last_name;
+              }
               if(active_managers[i].user_uuid) {
                 user.user_uuid = active_managers[i].user_uuid;
                 this.detail.activeManagers.push(user);
@@ -58,6 +63,12 @@ export class GroupComponent implements OnInit {
               if(active_members[i].nick_name) {
                 user.nick_name = active_members[i].nick_name;
               }
+              if(active_members[i].first_name)  {
+                user.first_name = active_members[i].first_name;
+              }
+              if(active_members[i].last_name)  {
+                user.last_name = active_members[i].last_name;
+              }
               if(active_members[i].user_uuid) {
                 user.user_uuid = active_members[i].user_uuid;
               }
@@ -67,5 +78,7 @@ export class GroupComponent implements OnInit {
 
         });    
   }
+
+
 
 }

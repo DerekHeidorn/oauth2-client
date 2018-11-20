@@ -35,16 +35,18 @@ export class AuthenticationService {
       }
 
     public getCurrentTokenAuthorities(): Array<string> {
+        console.log("getCurrentTokenAuthorities->this.currentTokenSubject=" + this.currentTokenSubject)
+        console.log("getCurrentTokenAuthorities->this.currentTokenSubject.value=" + this.currentTokenSubject.value)
         if(this.currentTokenSubject && this.currentTokenSubject.value) {
             let authorities: Array<string> = []
 
             let tokenInfo = this.getDecodedAccessToken(this.currentTokenSubject.value.token); // decode token
             let expireDate = tokenInfo.exp; // get token expiration dateTime
-            console.log(tokenInfo); // show decoded token object in console
-            console.log(tokenInfo.auth); 
+            console.log("getCurrentTokenAuthorities->tokenInfo=" + tokenInfo); // show decoded token object in console
+            console.log("getCurrentTokenAuthorities->tokenInfo.auth=" + tokenInfo.auth); 
 
             for(let i = 0; i < tokenInfo.auth.length; i++) {
-                console.log("tokenInfo.auth[" + i + "]=" + tokenInfo.auth[i]);
+                console.log("getCurrentTokenAuthorities->tokenInfo.auth[" + i + "]=" + tokenInfo.auth[i]);
                 authorities.push(tokenInfo.auth[i])
             }
             return authorities;

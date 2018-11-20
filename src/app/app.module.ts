@@ -17,7 +17,9 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { MenuComponent } from './components/common/menu/menu.component';
 import { ProfileComponent } from './components/common/profile/profile.component';
 import { GroupsComponent } from './components/groups/groups.component';
-import { GroupComponent } from './components/group/group.component';
+import { MemberDetailComponent } from './components/member-detail/member-detail.component';
+import { GroupDetailComponent } from './components/group-detail/group-detail.component';
+import { ManagerDetailComponent } from './components/manager-detail/manager-detail.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { GroupComponent } from './components/group/group.component';
     MenuComponent,
     ProfileComponent,
     GroupsComponent,
-    GroupComponent
+    MemberDetailComponent,
+    GroupDetailComponent,
+    ManagerDetailComponent
   ],
   imports: [
     BrowserModule,
