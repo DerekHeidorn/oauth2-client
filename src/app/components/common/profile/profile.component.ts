@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   // fetchCurrentUserProfile
   getUserProfile(): void {
     this.userService.fetchCurrentUserProfile()
-      .subscribe(userProfile => this.userProfile = userProfile);
+      .subscribe(responseData => this.userProfile = responseData.data);
   }
 
   goBack(): void {

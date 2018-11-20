@@ -22,7 +22,7 @@ export class GroupService {
 
   getGroup(uuid: string) {
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group/" + uuid)
+      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group/detail/" + uuid)
       .pipe(
         catchError(this.handleError)
       );

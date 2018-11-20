@@ -64,10 +64,10 @@ export class AuthenticationService {
         localStorage.setItem('currentToken', JSON.stringify(token));
 
         this.userService.fetchCurrentUser()
-            .subscribe((data) => {
+            .subscribe((response_data) => {
                 console.log("saveToken.next()..subscribe::token.user_uuid=" + token.user_uuid)
-                console.log("saveToken.next()..subscribe::data['username']=" + data['username'])
-                this.userService.saveCurrentUserByData(token.user_uuid, data['username']);
+                console.log("saveToken.next()..subscribe::data['username']=" + response_data['data']['username'])
+                this.userService.saveCurrentUserByData(token.user_uuid, response_data['data']['username']);
             });
         
     }
