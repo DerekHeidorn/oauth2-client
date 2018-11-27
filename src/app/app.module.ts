@@ -8,7 +8,6 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { CustomersComponent } from './components/customers/customers.component';
 import { AuthCallbackComponent } from './components/auth/auth-callback.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
@@ -30,7 +29,6 @@ import { ReportsService } from './services/reports.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    CustomersComponent,
     AuthCallbackComponent,
     HeaderComponent,
     FooterComponent,

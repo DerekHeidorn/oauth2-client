@@ -1,14 +1,14 @@
 
 <div style="text-align:right; padding: 5px">
-  <span *ngIf="!(user && user.username)">
+  <span *ngIf="!(user && user.alias)">
     [<a href="/">Home</a>]
     [<a href="http://localhost:9000/signup">Sign Up</a>]
     [<a href="http://localhost:9000/login">Log In</a>]
   </span>
 
-  <span *ngIf="user && user.username">
-    [<a routerLink="/profile">{{user.username}}</a>] 
-    [<a *ngIf="user && user.username" (click)="logout()">Log Out</a>]
+  <span *ngIf="user && user.alias">
+    [<a routerLink="/profile">{{user.alias}}</a>] 
+    [<a *ngIf="user && user.alias" (click)="logout()">Log Out</a>]
   </span>
 </div>
 

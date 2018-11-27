@@ -1,6 +1,7 @@
 export class User {
     uuid: string;
     username: string;
+    alias: string;
 }
 
 export class UserDetail {
@@ -13,6 +14,7 @@ export class UserDetail {
 
 export class UserProfile {
     user_uuid: string;
+    alias: string;
     username: string;
     first_name: string;
     last_name: string;

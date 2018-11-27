@@ -33,12 +33,14 @@ export class UserService {
       this.currentUserSubject.next(user);
   }
 
-  saveCurrentUserByData(user_uuid:string, username:string) {
+  saveCurrentUserByData(user_uuid:string, username:string, alias:string) {
     console.log("saveCurrentUserByData->user_uuid=" + user_uuid);
     console.log("saveCurrentUserByData->username=" + username);
+    console.log("saveCurrentUserByData->alias=" + alias);
     let user: User = new User()
     user.uuid = user_uuid;
     user.username = username;
+    user.alias = alias;
     this.saveCurrentUser(user)
   } 
   clearCurrentUser() {

@@ -71,7 +71,9 @@ export class AuthenticationService {
             .subscribe((response_data) => {
                 // console.log("saveToken.next()..subscribe::token.user_uuid=" + token.user_uuid)
                 // console.log("saveToken.next()..subscribe::data['username']=" + response_data['data']['username'])
-                this.userService.saveCurrentUserByData(token.user_uuid, response_data['data']['username']);
+                this.userService.saveCurrentUserByData(token.user_uuid, 
+                                                        response_data['data']['username'],
+                                                        response_data['data']['alias']);
             });
         
     }
