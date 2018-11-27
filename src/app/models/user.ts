@@ -1,21 +1,20 @@
-export class User {
+export class PrivateUser {
     uuid: string;
-    username: string;
     alias: string;
+    username: string;
 }
 
-export class UserDetail {
+export class PrivateUserProfile {
     user_uuid: string;
+    alias: string;
     username: string;
     first_name: string;
     last_name: string;
+}
+
+export class PublicUserDetail {
+    user_uuid: string;
+    alias: string;
+    username: string;
     nick_name: string;
-}
-
-export class UserProfile {
-    user_uuid: string;
-    alias: string;
-    username: string;
-    first_name: string;
-    last_name: string;
 }

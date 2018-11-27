@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { UserService } from '../../../services/user.service';
 import { UserToken } from '../../../models/userToken';
-import { User } from '../../../models/user';
+import { PrivateUser } from '../../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,7 @@ import { User } from '../../../models/user';
 export class HeaderComponent implements OnInit {
 
   userToken:UserToken = null;
-  user:User = null;
+  user:PrivateUser = null;
 
   constructor(private authenticationService: AuthenticationService,
               public userService: UserService) { 
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
                   this.userToken = userToken
                 });
 
-                userService.currentUser.subscribe((user:User) => {
+                userService.currentUser.subscribe((user:PrivateUser) => {
                   console.log("HeaderComponent->constructor:user" + user)
                   this.user = user
                 });
@@ -41,7 +41,5 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.userService.clearCurrentUser()
     this.authenticationService.logout()
-    // this.isLoggedIn = false;
-    // this.username = null;
   }
 }

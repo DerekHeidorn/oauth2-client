@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Group } from '../../models/group';
+import { PublicGroup } from '../../models/group';
 import { AppResponse } from '../../models/response';
 import { GroupService } from '../../services/group.service';
 
@@ -10,7 +10,7 @@ import { GroupService } from '../../services/group.service';
 })
 export class GroupsComponent implements OnInit {
 
-  public groups: Group[] = [];
+  public groups: PublicGroup[] = [];
 
   constructor(private groupService: GroupService) { }
 
@@ -20,7 +20,7 @@ export class GroupsComponent implements OnInit {
         console.log("data=" + responseData.data)
         this.groups = []
         for(let i = 0; i < responseData.data.length; i++) {
-          let g: Group = new Group()
+          let g: PublicGroup = new PublicGroup()
           g.uuid = responseData.data[i].group_uuid;
           g.name = responseData.data[i].group_name;
           this.groups.push(g);

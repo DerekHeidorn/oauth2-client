@@ -29,9 +29,7 @@ export class MemberDetailComponent implements OnInit {
           this.member = new Member();
           
           this.member.uuid = responseData.data.user_uuid;
-          this.member.first_name = responseData.data.first_name;
-          this.member.last_name = responseData.data.last_name;
-          this.member.nick_name = responseData.data.nick_name;
+          this.member.alias = responseData.data.alias;
           this.member.membership_from_ts = responseData.data.membership_from_ts;
           this.member.membership_to_ts = responseData.data.membership_to_ts;
 

@@ -1,12 +1,12 @@
-import { UserDetail } from './user';
+import { PublicUserDetail } from './user';
 
-export class Group {
+export class PublicGroup {
     uuid: string;
     name: string;
   }
 
-  export class GroupDetail {
-    group: Group;
-    activeMembers: UserDetail[];
-    activeManagers: UserDetail[];
+  export class PublicGroupDetail {
+    group: PublicGroup;
+    activeMembers: PublicUserDetail[];
+    activeManagers: PublicUserDetail[];
   }

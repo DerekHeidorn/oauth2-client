@@ -29,9 +29,7 @@ export class ManagerDetailComponent implements OnInit {
           this.manager = new Manager();
           
           this.manager.uuid = responseData.data.user_uuid;
-          this.manager.first_name = responseData.data.first_name;
-          this.manager.last_name = responseData.data.last_name;
-          this.manager.nick_name = responseData.data.nick_name;
+          this.manager.alias = responseData.data.alias;
           this.manager.manager_from_ts = responseData.data.manager_from_ts;
           this.manager.manager_to_ts = responseData.data.manager_to_ts;
 

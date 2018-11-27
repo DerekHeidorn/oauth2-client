@@ -7,9 +7,7 @@
     <ul>
       <li *ngFor="let manager of detail.activeManagers">
         <a routerLink="/group/{{detail.group.uuid}}/manager/detail/{{manager.user_uuid}}">
-          <span *ngIf="manager.first_name">{{manager.first_name}}</span> &nbsp;
-          <span *ngIf="manager.last_name">{{manager.last_name}}</span> &nbsp;
-          <span *ngIf="manager.nick_name">({{manager.nick_name}})</span>
+          <span *ngIf="manager.alias">{{manager.alias}}</span>
         </a>
       </li>
     </ul>
@@ -18,9 +16,7 @@
     <ul>
       <li *ngFor="let member of detail.activeMembers">
         <a routerLink="/group/{{detail.group.uuid}}/member/detail/{{member.user_uuid}}">
-          <span *ngIf="member.first_name">{{member.first_name}}</span> &nbsp;
-          <span *ngIf="member.last_name">{{member.last_name}}</span> &nbsp;
-          <span *ngIf="member.nick_name">({{member.nick_name}})</span>
+          <span *ngIf="member.alias">{{member.alias}}</span>
         </a>
       </li>
     </ul>

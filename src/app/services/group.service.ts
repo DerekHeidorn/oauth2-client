@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Group } from '../models/group';
 import { AppResponse } from '../models/response';
 
 @Injectable({
