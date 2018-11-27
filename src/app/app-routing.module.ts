@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './components/common/profile/profile.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { ReportsComponent } from './components/reports/reports.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { GroupDetailComponent } from './components/group-detail/group-detail.component';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
@@ -13,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard]},
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
   { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard]},
   { path: 'group/detail/:uuid', component: GroupDetailComponent, canActivate: [AuthGuard]},
   { path: 'group/:group_uuid/manager/detail/:user_uuid', component: ManagerDetailComponent, canActivate: [AuthGuard]},

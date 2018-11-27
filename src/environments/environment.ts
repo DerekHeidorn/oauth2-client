@@ -7,7 +7,7 @@ export const environment = {
   auth: {
     clientID: 'CLTID-Zeq1LRso5q-iLU9RKCKnu',
     domain: 'localhost:9000', // e.g., you.auth0.com
-    audience: 'http://localhost:9001', // e.g., http://localhost:3001
+    audience: ['http://localhost:9001', 'http://localhost:9002'], // e.g., http://localhost:3001
     redirect: 'http://localhost:9000',
     scope: 'openid profile email'
   }

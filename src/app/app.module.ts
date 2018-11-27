@@ -9,8 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { AuthenticationService } from './services/authentication.service';
-import { UserService } from './services/user.service';
 import { AuthCallbackComponent } from './components/auth/auth-callback.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
@@ -20,6 +18,12 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
 import { GroupDetailComponent } from './components/group-detail/group-detail.component';
 import { ManagerDetailComponent } from './components/manager-detail/manager-detail.component';
+import { ReportsComponent } from './components/reports/reports.component';
+
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { GroupService } from './services/group.service';
+import { ReportsService } from './services/reports.service';
 
 
 @NgModule({
@@ -35,7 +39,8 @@ import { ManagerDetailComponent } from './components/manager-detail/manager-deta
     GroupsComponent,
     MemberDetailComponent,
     GroupDetailComponent,
-    ManagerDetailComponent
+    ManagerDetailComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { ManagerDetailComponent } from './components/manager-detail/manager-deta
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService, UserService,
+  providers: [AuthenticationService, UserService, ReportsService, GroupService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

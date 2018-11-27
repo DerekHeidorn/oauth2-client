@@ -35,21 +35,23 @@ export class AuthenticationService {
       }
 
     public getCurrentTokenAuthorities(): Array<string> {
-        console.log("getCurrentTokenAuthorities->this.currentTokenSubject=" + this.currentTokenSubject)
-        console.log("getCurrentTokenAuthorities->this.currentTokenSubject.value=" + this.currentTokenSubject.value)
+        // console.log("getCurrentTokenAuthorities->this.currentTokenSubject=" + this.currentTokenSubject)
+        // console.log("getCurrentTokenAuthorities->this.currentTokenSubject.value=" + this.currentTokenSubject.value)
         if(this.currentTokenSubject && this.currentTokenSubject.value) {
             let authorities: Array<string> = []
 
             let tokenInfo = this.getDecodedAccessToken(this.currentTokenSubject.value.token); // decode token
             let expireDate = tokenInfo.exp; // get token expiration dateTime
-            console.log("getCurrentTokenAuthorities->tokenInfo=" + tokenInfo); // show decoded token object in console
-            console.log("getCurrentTokenAuthorities->tokenInfo.auth=" + tokenInfo.auth); 
+            // console.log("getCurrentTokenAuthorities->tokenInfo=" + tokenInfo); // show decoded token object in console
+            // console.log("getCurrentTokenAuthorities->tokenInfo.authorities=" + tokenInfo.authorities); 
 
-            for(let i = 0; i < tokenInfo.auth.length; i++) {
-                console.log("getCurrentTokenAuthorities->tokenInfo.auth[" + i + "]=" + tokenInfo.auth[i]);
-                authorities.push(tokenInfo.auth[i])
+            if(tokenInfo && tokenInfo.authorities) {
+                for(let i = 0; i < tokenInfo.authorities.length; i++) {
+                    // console.log("getCurrentTokenAuthorities->tokenInfo.authorities[" + i + "]=" + tokenInfo.authorities[i]);
+                    authorities.push(tokenInfo.authorities[i])
+                }
+                return authorities;
             }
-            return authorities;
         }
 
         return null;
@@ -57,18 +59,18 @@ export class AuthenticationService {
 
 
     saveToken(token: UserToken) {
-        console.log("currentTokenSubject.next().token=" + token)
-        if(token.user_uuid) {
-            console.log("currentTokenSubject.next().token.user_uuid=" + token.user_uuid)
-            console.log("currentTokenSubject.next().token.token=" + token.token)
-        }
+        // console.log("currentTokenSubject.next().token=" + token)
+        // if(token.user_uuid) {
+        //     console.log("currentTokenSubject.next().token.user_uuid=" + token.user_uuid)
+        //     console.log("currentTokenSubject.next().token.token=" + token.token)
+        // }
         this.currentTokenSubject.next(token);
         localStorage.setItem('currentToken', JSON.stringify(token));
 
         this.userService.fetchCurrentUser()
             .subscribe((response_data) => {
-                console.log("saveToken.next()..subscribe::token.user_uuid=" + token.user_uuid)
-                console.log("saveToken.next()..subscribe::data['username']=" + response_data['data']['username'])
+                // console.log("saveToken.next()..subscribe::token.user_uuid=" + token.user_uuid)
+                // console.log("saveToken.next()..subscribe::data['username']=" + response_data['data']['username'])
                 this.userService.saveCurrentUserByData(token.user_uuid, response_data['data']['username']);
             });
         

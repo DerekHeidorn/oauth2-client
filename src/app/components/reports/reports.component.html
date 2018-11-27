@@ -1,0 +1,13 @@
+<form (ngSubmit)="queryReport()">
+    <p>
+    <select name="selectedReport" [(ngModel)]="selectedReport">
+        <option *ngFor="let item of reportList" [value]="item.itemId">
+            {{item.itemLabel}}
+        </option>
+    </select>
+    </p>
+
+    <p>
+    <button type="submit">Submit</button>
+    </p>
+</form>
