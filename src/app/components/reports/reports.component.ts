@@ -12,10 +12,15 @@ import { ReportsService } from '../../services/reports.service';
 export class ReportsComponent implements OnInit {
 
   public selectedReport: String = null;
+  public selectedReportProcessType: String = "http";
+  public selectedReportOutputType: String = "pdf";
+  
   public reportList: ListItem[] = [];
 
-  constructor( 
-            private reportsService: ReportsService) { }
+  constructor(private reportsService: ReportsService) {
+    this.selectedReportProcessType = "http";
+    this.selectedReportOutputType = "pdf";
+  }
 
   ngOnInit() {
     this.reportsService.getReportList()
@@ -38,6 +43,8 @@ export class ReportsComponent implements OnInit {
     let reportCriteria: ReportCriteria = new ReportCriteria();
     if(this.selectedReport) {
       reportCriteria.reportCd =  this.selectedReport.toString();
+      reportCriteria.reportProcessType = this.selectedReportProcessType.toString();
+      reportCriteria.reportOutputType = this.selectedReportOutputType.toString();
 
       this.getReportKey(reportCriteria);
     }
@@ -45,9 +52,6 @@ export class ReportsComponent implements OnInit {
 
   goToUrl(externalUrl:string): void {
     console.log("externalUrl=" + externalUrl)
-    //this.document.location.href = externalUrl;
-    //document.location.href = externalUrl;
-    
     window.open(externalUrl, "_blank");
   }
 
@@ -56,12 +60,16 @@ export class ReportsComponent implements OnInit {
     this.reportsService.createReportKey(reportCriteria)
       .subscribe((responseData: AppResponse) => {
         console.log("data=" + responseData.data)
-        let reportKey: string = null;
-        console.log("responseData.data.key=" + responseData.data.key)
-        if (responseData.data && responseData.data.key) {
-          reportKey = responseData.data.key;
-          let externalUrl:string = this.reportsService.getReportUrlWithKey(reportCriteria, reportKey);
-          this.goToUrl(externalUrl)
+        if(reportCriteria.reportProcessType == "http") {
+          let reportKey: string = null;
+          console.log("responseData.data.key=" + responseData.data.key)
+          if (responseData.data && responseData.data.key) {
+            reportKey = responseData.data.key;
+            let externalUrl:string = this.reportsService.getReportUrlWithKey(reportCriteria, reportKey);
+            this.goToUrl(externalUrl)
+          }
+        } else {
+          console.log("Email sent? ... do nothing")
         }
 
     });

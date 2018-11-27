@@ -1,10 +1,21 @@
+<h3>Reports</h3>
+<br/>
 <form (ngSubmit)="queryReport()">
     <p>
-    <select name="selectedReport" [(ngModel)]="selectedReport">
-        <option *ngFor="let item of reportList" [value]="item.itemId">
-            {{item.itemLabel}}
-        </option>
-    </select>
+        <select name="selectedReport" [(ngModel)]="selectedReport">
+            <option *ngFor="let item of reportList" [value]="item.itemId">
+                {{item.itemLabel}}
+            </option>
+        </select>
+    </p>
+
+    <p title="Process Type">
+        <input type="radio" [(ngModel)]="selectedReportProcessType" name="selectedReportProcessType" value="http" ng-value="http"/> Http
+        <input type="radio" [(ngModel)]="selectedReportProcessType" name="selectedReportProcessType" value="email" ng-value="email"/> Email
+    </p>
+    <p title="Process Type">
+        <input type="radio" [(ngModel)]="selectedReportOutputType" name="selectedReportOutputType" value="pdf" ng-value="pdf"/> PDF
+        <input type="radio" [(ngModel)]="selectedReportOutputType" name="selectedReportOutputType" value="csv" ng-value="csv"/> CSV
     </p>
 
     <p>
