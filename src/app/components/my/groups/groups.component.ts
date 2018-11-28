@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicGroup } from '../../models/group';
-import { AppResponse } from '../../models/response';
-import { GroupService } from '../../services/group.service';
+import { PublicGroup } from '../../../models/group';
+import { AppResponse } from '../../../models/response';
+import { GroupService } from '../../../services/group.service';
 
 @Component({
   selector: 'app-groups',
@@ -15,7 +15,7 @@ export class GroupsComponent implements OnInit {
   constructor(private groupService: GroupService) { }
 
   ngOnInit() {
-    this.groupService.getGroups()
+    this.groupService.getMyGroups()
       .subscribe((responseData: AppResponse) => {
         console.log("data=" + responseData.data)
         this.groups = []
@@ -25,10 +25,7 @@ export class GroupsComponent implements OnInit {
           g.name = responseData.data[i].group_name;
           this.groups.push(g);
         }
-        
-
   });
 
   }
-
 }

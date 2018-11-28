@@ -7,7 +7,7 @@
   </span>
 
   <span *ngIf="user && user.alias">
-    [<a routerLink="/profile">{{user.alias}}</a>] 
+    [<a routerLink="/my/profile">{{user.alias}}</a>] 
     [<a *ngIf="user && user.alias" (click)="logout()">Log Out</a>]
   </span>
 </div>

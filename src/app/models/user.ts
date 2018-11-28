@@ -4,6 +4,7 @@ export class PrivateUser {
     username: string;
 }
 
+
 export class PrivateUserProfile {
     user_uuid: string;
     alias: string;
@@ -12,9 +13,16 @@ export class PrivateUserProfile {
     last_name: string;
 }
 
+export class PublicUser {
+    user_uuid: string;
+    user_uuid_digest: string;
+    alias: string;
+}
+
 export class PublicUserDetail {
     user_uuid: string;
     alias: string;
     username: string;
     nick_name: string;
 }
+

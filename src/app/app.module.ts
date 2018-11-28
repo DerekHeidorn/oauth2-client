@@ -12,8 +12,8 @@ import { AuthCallbackComponent } from './components/auth/auth-callback.component
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { MenuComponent } from './components/common/menu/menu.component';
-import { ProfileComponent } from './components/common/profile/profile.component';
-import { GroupsComponent } from './components/groups/groups.component';
+import { ProfileComponent } from './components/my/profile/profile.component';
+import { GroupsComponent } from './components/my/groups/groups.component';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
 import { GroupDetailComponent } from './components/group-detail/group-detail.component';
 import { ManagerDetailComponent } from './components/manager-detail/manager-detail.component';
@@ -23,6 +23,12 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { GroupService } from './services/group.service';
 import { ReportsService } from './services/reports.service';
+import { PublicUsersComponent } from './components/public-users/public-users.component';
+import { PublicUserDetailComponent } from './components/public-user-detail/public-user-detail.component';
+import { SidebarComponent } from './components/common/sidebar/sidebar.component';
+import { PreferencesComponent } from './components/my/preferences/preferences.component';
+import { FriendsComponent } from './components/my/friends/friends.component';
+import { PublicGroupsComponent } from './components/public-groups/public-groups.component';
 
 
 @NgModule({
@@ -38,7 +44,13 @@ import { ReportsService } from './services/reports.service';
     MemberDetailComponent,
     GroupDetailComponent,
     ManagerDetailComponent,
-    ReportsComponent
+    ReportsComponent,
+    PublicUsersComponent,
+    PublicUserDetailComponent,
+    SidebarComponent,
+    PreferencesComponent,
+    FriendsComponent,
+    PublicGroupsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+<div id="page-bgtop">
+
+    <app-sidebar></app-sidebar>
+
+    <div id="page-bgbtm">
+        <div id="content">
+            <div class="post">
+
+                <h2>My Groups</h2>
+
+                <ul>
+                  <li *ngFor="let group of groups">
+                    <a routerLink="/group/detail/{{group.uuid}}">
+                      {{group.name}}
+                    </a>
+                  </li>
+                </ul>
+
+
+          </div>
+      </div>
+  </div>
+
+  <div style="clear: both;">&nbsp;</div>
+</div>

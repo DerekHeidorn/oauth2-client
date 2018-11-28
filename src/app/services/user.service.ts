@@ -49,12 +49,20 @@ export class UserService {
     localStorage.removeItem('currentUser');
   }
 
-  fetchCurrentUser() {
+  getCurrentUser() {
     return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/account/');
   }
 
-  fetchCurrentUserProfile() {
+  getCurrentUserProfile() {
     return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/account/profile/');
+  }
+
+  getPublicUsers() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/user/list');
+  }
+
+  getPublicUserDetail(user_uuid: string) {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/user/details/' + user_uuid);
   }
 
   // Implement a method to handle errors if any

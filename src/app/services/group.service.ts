@@ -19,6 +19,14 @@ export class GroupService {
       );
   }
 
+  getMyGroups() {
+    return this.http
+      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/my/groups")
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   getGroup(uuid: string) {
     return this.http
       .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group/detail/" + uuid)

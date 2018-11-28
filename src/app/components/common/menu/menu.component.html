@@ -1,6 +1,6 @@
 <ul>
     <li><a routerLink="/">Home</a></li>
-    <li *ngIf="hasAuthority('CUST_ACCESS') || hasAuthority('ADM_ACCESS')"> <a routerLink="/groups">Groups</a></li>
-    <li *ngIf="hasAuthority('CUST_RPTS') || hasAuthority('ADM_RPTS')"> <a routerLink="/reports">Reports</a></li>
-    <li *ngIf="hasAuthority('ADM_ACCESS')"> <a routerLink="/customers">Customers</a></li>
+    <li *ngIf="hasAuthority('CUST_ACCESS')"><a routerLink="/users">Users</a></li>
+    <li *ngIf="hasAuthority('GRP_ACCESS')"> <a routerLink="/groups">Groups</a></li>
+    <li *ngIf="hasAuthority('RPT_ACCESS')"><a routerLink="/reports">Reports</a></li>
 </ul>
