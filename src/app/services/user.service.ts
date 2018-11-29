@@ -65,6 +65,10 @@ export class UserService {
     return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/user/details/' + user_uuid);
   }
 
+  getMyFriends() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/friends/');
+  }
+
   // Implement a method to handle errors if any
   private handleError(err: HttpErrorResponse | any) {
     console.error('An error occurred', err);
