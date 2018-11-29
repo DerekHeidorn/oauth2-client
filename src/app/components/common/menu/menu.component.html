@@ -1,5 +1,6 @@
 <ul>
     <li><a routerLink="/">Home</a></li>
+    <li *ngIf="hasAuthority('CUST_ACCESS')"><a routerLink="/my/profile">About Me</a></li>
     <li *ngIf="hasAuthority('CUST_ACCESS')"><a routerLink="/users">Users</a></li>
     <li *ngIf="hasAuthority('GRP_ACCESS')"> <a routerLink="/groups">Groups</a></li>
     <li *ngIf="hasAuthority('RPT_ACCESS')"><a routerLink="/reports">Reports</a></li>

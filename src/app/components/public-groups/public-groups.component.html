@@ -1,9 +1,23 @@
-<h2>Groups</h2>
+<div id="page-bgtop">
 
-<ul>
-  <li *ngFor="let group of groups">
-    <a routerLink="/group/detail/{{group.uuid}}">
-      {{group.name}}
-    </a>
-  </li>
-</ul>
+  <div id="page-bgbtm">
+      <div id="content">
+
+          <h2>Public Groups</h2>
+
+          <div class="post">
+
+          <ul>
+            <li *ngFor="let group of groups">
+              <a routerLink="/group/detail/{{group.uuid}}">
+                {{group.name}}
+              </a>
+            </li>
+          </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="clear: both;">&nbsp;</div>
+</div>

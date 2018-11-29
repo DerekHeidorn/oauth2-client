@@ -1,26 +1,26 @@
 
 <div id="page-bgtop">
 
-        <app-sidebar></app-sidebar>
-    
-        <div id="page-bgbtm">
-            <div id="content">
-                <div class="post">
-    
-                    <h2>My Friends</h2>
-    
-                    <ul>
-                      <li *ngFor="let friend of friends">
-                        <a routerLink="/user/detail/{{friend.user_uuid}}">
-                          {{friend.alias}}
-                        </a>
-                      </li>
-                    </ul>
-    
-    
-              </div>
-          </div>
-      </div>
-    
-      <div style="clear: both;">&nbsp;</div>
+    <app-sidebar></app-sidebar>
+
+    <div id="page-bgbtm">
+        <div id="content">
+
+            <h2>My Friends</h2>
+
+            <div class="post">
+                <ul>
+                    <li *ngFor="let friend of friends">
+                    <a routerLink="/user/detail/{{friend.user_uuid}}">
+                        {{friend.alias}}
+                    </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
     </div>
+
+    <div style="clear: both;">&nbsp;</div>
+</div>

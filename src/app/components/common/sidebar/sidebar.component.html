@@ -1,15 +1,13 @@
 <span *ngIf="(user && user.alias)">
     <div id="sidebar">
+
+        <h4>About Me</h4>
         <ul>
-            <li>
-                <h2>About Me</h2>
-                <ul>
-                    <li><a routerLink="/my/profile">My Profile</a></li>
-                    <li><a routerLink="/my/friends">My Friends</a></li>
-                    <li><a routerLink="/my/groups">My Groups</a></li>
-                    <li><a routerLink="/my/preferences">My Preferences</a></li>
-                </ul>
-            </li>
+            <li><a routerLink="/my/profile">Profile</a></li>
+            <li><a routerLink="/my/friends">Friends</a></li>
+            <li><a routerLink="/my/groups">Groups</a></li>
+            <li><a routerLink="/my/preferences">Preferences</a></li>
         </ul>
+
     </div>
 </span>

@@ -1,9 +1,22 @@
-<h2>Public Users</h2>
+<div id="page-bgtop">
 
-<ul>
-  <li *ngFor="let user of users">
-    <a routerLink="/user/detail/{{user.user_uuid}}">
-      {{user.alias}}
-    </a>
-  </li>
-</ul>
+  <div id="page-bgbtm">
+    <div id="content">
+  
+      <h2>Public Users</h2>
+  
+      <div class="post">
+
+        <ul>
+          <li *ngFor="let user of users">
+            <a routerLink="/user/detail/{{user.user_uuid}}">
+              {{user.alias}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="clear: both;">&nbsp;</div>
+</div>
