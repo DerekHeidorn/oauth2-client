@@ -23,6 +23,7 @@ export class PublicGroupsComponent implements OnInit {
           let g: PublicGroup = new PublicGroup()
           g.uuid = responseData.data[i].group_uuid;
           g.name = responseData.data[i].group_name;
+          g.description = responseData.data[i].group_de; 
           this.groups.push(g);
         }
   });

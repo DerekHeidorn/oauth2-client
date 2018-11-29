@@ -34,6 +34,7 @@ export class GroupDetailComponent implements OnInit {
           
           this.detail.group.uuid = responseData.data.group.group_uuid;
           this.detail.group.name = responseData.data.group.group_name;
+          this.detail.group.description = responseData.data.group.group_de; 
 
           let active_managers = responseData.data.active_managers;
           if(active_managers) {

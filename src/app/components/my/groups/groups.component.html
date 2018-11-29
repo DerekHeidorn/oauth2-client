@@ -11,7 +11,8 @@
                   <li *ngFor="let group of groups">
                     <a routerLink="/group/detail/{{group.uuid}}">
                       {{group.name}}
-                    </a>
+                    </a> 
+                    - {{group.description}}
                   </li>
                 </ul>
 
