@@ -1,4 +1,4 @@
-import { PublicUserDetail } from './user';
+import { PublicUserProfile } from './user';
 
 export class PublicGroup {
     uuid: string;
@@ -9,6 +9,6 @@ export class PublicGroup {
 
   export class PublicGroupDetail {
     group: PublicGroup;
-    activeMembers: PublicUserDetail[];
-    activeManagers: PublicUserDetail[];
+    activeMembers: PublicUserProfile[];
+    activeManagers: PublicUserProfile[];
   }

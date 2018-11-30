@@ -25,6 +25,15 @@ export class PrivateUserPreferences {
 
 }
 
+export class PrivateUpdatePrivateFlag {
+    is_private: boolean;
+}
+
+export class PrivateUpdateNames {
+    first_name: string;
+    last_name: string;
+}
+
 export class PrivateUpdatePassword {
     old_password: string;
     new_password: string;

@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { throwError } from 'rxjs';
-import { PrivateUser, PrivateUpdatePassword, PrivateUpdateUsername } from '../models/user';
+import { PrivateUser, PrivateUpdatePassword, PrivateUpdateUsername, PrivateUpdatePrivateFlag, PrivateUpdateNames } from '../models/user';
 
 
 @Injectable({
@@ -61,6 +61,14 @@ export class UserService {
 
   getMyFriends() {
     return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/friends');
+  }
+
+  updateMyNames(toUpdate: PrivateUpdateNames) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/preferences/names', toUpdate);
+  }
+
+  updateMyPrivateFlag(toUpdate: PrivateUpdatePrivateFlag) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/preferences/private', toUpdate);
   }
 
   updateMyPassword(updatePassword: PrivateUpdatePassword) {

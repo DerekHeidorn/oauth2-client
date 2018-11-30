@@ -23,7 +23,16 @@
 
                     Alias: {{preferences.alias}}<br/>
 
-                    Full Name: {{preferences.formatted_name}} [<a>Edit</a>]<br/>
+                    Full Name: 
+                    
+                    <span *ngIf="!isEditName">{{preferences.formatted_name}} &nbsp; [<a (click)="makeNameEditable();">Edit</a>]</span>
+                    <span *ngIf="isEditName">
+                            <input type="text" [(ngModel)]="editableFirstName" name="editableFirstName" /> &nbsp;
+                            <input type="text" [(ngModel)]="editableLastName" name="editableLastName" /> &nbsp;
+                            <button type="submit" (click)="saveNames();">Save</button> &nbsp; 
+                            <a (click)="makeNameUneditable();">Cancel</a>
+                    </span>
+                    <br/>
 
                     <br/>
                     <a routerLink="/my/changeEmail"><button type="submit">Change Email</button></a> &nbsp;
@@ -32,7 +41,20 @@
                 <div class="post">
                     <h4>Personal preferences</h4>
 
-                    Private: {{"" + preferences.is_private}} [<a>Edit</a>]<br/> 
+                    Private: 
+                    <span *ngIf="!isEditPrivate">
+                        <span *ngIf="preferences.is_private != null && preferences.is_private">Yes</span>
+                        <span *ngIf="preferences.is_private != null && !preferences.is_private">No</span>
+                        [<a (click)="makePrivateEditable();">Edit</a>]
+                    </span>
+                    <span *ngIf="isEditPrivate">
+                        <input type="radio" [(ngModel)]="editablePrivate" name="isPrivateRadioButtons" [value]="true"/> Yes &nbsp;
+                        <input type="radio" [(ngModel)]="editablePrivate" name="isPrivateRadioButtons" [value]="false"/> No &nbsp;
+                        <button type="submit" (click)="savePrivate();">Save</button> &nbsp; 
+                        <a (click)="makePrivateUneditable();">Cancel</a>
+                    </span>
+                    
+                    <br/> 
                 </div>
                 <!-- div class="post">
                     <h4>Group account configuration</h4>
