@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicUserDetail } from '../../models/user';
+import { PublicUserProfile } from '../../models/user';
 import { PublicGroup, PublicGroupDetail } from '../../models/group';
 import { GroupService } from '../../services/group.service';
 import { ActivatedRoute } from '@angular/router';
@@ -39,11 +39,8 @@ export class GroupDetailComponent implements OnInit {
           let active_managers = responseData.data.active_managers;
           if(active_managers) {
             for(let i = 0; i < active_managers.length; i++) {
-              let user: PublicUserDetail = new PublicUserDetail();
+              let user: PublicUserProfile = new PublicUserProfile();
 
-              if(active_managers[i].nick_name)  {
-                user.nick_name = active_managers[i].nick_name;
-              }
               if(active_managers[i].alias)  {
                 user.alias = active_managers[i].alias;
               }
@@ -57,10 +54,7 @@ export class GroupDetailComponent implements OnInit {
           let active_members = responseData.data.active_members;
           if(active_members) {
             for(let i = 0; i < active_members.length; i++) {
-              let user: PublicUserDetail = new PublicUserDetail();
-              if(active_members[i].nick_name) {
-                user.nick_name = active_members[i].nick_name;
-              }
+              let user: PublicUserProfile = new PublicUserProfile();
               if(active_members[i].alias)  {
                 user.alias = active_members[i].alias;
               }

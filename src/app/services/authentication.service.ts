@@ -67,7 +67,7 @@ export class AuthenticationService {
         this.currentTokenSubject.next(token);
         localStorage.setItem('currentToken', JSON.stringify(token));
 
-        this.userService.getCurrentUser()
+        this.userService.getMyAccount()
             .subscribe((response_data) => {
                 // console.log("saveToken.next()..subscribe::token.user_uuid=" + token.user_uuid)
                 // console.log("saveToken.next()..subscribe::data['username']=" + response_data['data']['username'])

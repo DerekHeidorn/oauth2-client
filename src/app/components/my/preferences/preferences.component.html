@@ -3,42 +3,42 @@
     <app-sidebar></app-sidebar>
 
     <div id="page-bgbtm">
-        <div id="content">
+        <div id="content" >
             <h2>My Preferences</h2>
+            <div *ngIf="preferences">
 
-            <div class="post">
+                <div class="post">
 
-                <h4>Account plan</h4>
+                    <h4>Account plan</h4>
 
+                        Type: {{preferences.account_type}}<br/>
 
-                    Type:<br/>
+                    <!-- button type="submit">Buy Subscription</button -->
+                </div>
+                <div class="post">
 
-                <br/>
-                <button type="submit">Buy Subscription</button>
-            </div>
-            <div class="post">
+                    <h4>Authentication data</h4>
 
-                <h4>Authentication data</h4>
+                    Email: {{preferences.username}}<br/>
 
-                Email: <br/>
+                    Alias: {{preferences.alias}}<br/>
 
-                Alias:<br/>
+                    Full Name: {{preferences.formatted_name}} [<a>Edit</a>]<br/>
 
-                Full Name: [<a>Edit</a>]<br/>
+                    <br/>
+                    <a routerLink="/my/changeEmail"><button type="submit">Change Email</button></a> &nbsp;
+                    <a routerLink="/my/changePassword"><button type="submit">Change Password</button></a>
+                </div>
+                <div class="post">
+                    <h4>Personal preferences</h4>
 
-                <br/>
-                <button type="submit">Change Email</button> &nbsp;
-                <button type="submit">Change Password</button>
-            </div>
-            <div class="post">
-                <h4>Personal preferences</h4>
+                    Private: {{"" + preferences.is_private}} [<a>Edit</a>]<br/> 
+                </div>
+                <!-- div class="post">
+                    <h4>Group account configuration</h4>
 
-                Private: [<a>Edit</a>]<br/> 
-            </div>
-            <div class="post">
-                <h4>Group account configuration</h4>
-
-                Group Name:[<a>Edit</a>]<br/>
+                    Group Name:[<a>Edit</a>]<br/>
+                </div -->
             </div>
 
         </div>

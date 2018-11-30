@@ -35,6 +35,22 @@ export class GroupService {
       );
   }
 
+  subscribe(uuid: string, uuid_digest: string) {
+    return this.http
+      .post<AppResponse>("http://127.0.0.1:9001/api/v1.0/my/subscribe/group/" + uuid + "/" + uuid_digest, null)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  unsubscribe(uuid: string, uuid_digest: string) {
+    return this.http
+      .post<AppResponse>("http://127.0.0.1:9001/api/v1.0/my/unsubscribe/group/" + uuid + "/" + uuid_digest, null)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
 
   // Implement a method to handle errors if any

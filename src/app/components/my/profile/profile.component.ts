@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { PrivateUserProfile }  from '../../../models/user';
+import { PublicUserProfile }  from '../../../models/user';
 import { UserService }  from '../../../services/user.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { UserService }  from '../../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  @Input() userProfile: PrivateUserProfile;
+  profile: PublicUserProfile;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,19 +24,15 @@ export class ProfileComponent implements OnInit {
     this.getUserProfile()
   }
 
-  // fetchCurrentUserProfile
+ 
   getUserProfile(): void {
-    this.userService.getCurrentUserProfile()
-      .subscribe(responseData => this.userProfile = responseData.data);
+    this.userService.getMyProfile()
+      .subscribe(responseData => this.profile = responseData.data);
   }
 
   goBack(): void {
     this.location.back();
   }
 
-//  save(): void {
-//     this.heroService.updateHero(this.hero)
-//       .subscribe(() => this.goBack());
-//   }
 
 }

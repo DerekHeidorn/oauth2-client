@@ -1,16 +1,14 @@
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { throwError } from 'rxjs';
-import { PrivateUser } from '../models/user';
+import { PrivateUser, PrivateUpdatePassword, PrivateUpdateUsername } from '../models/user';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  private getPublicUserUrl = 'http://127.0.0.1:9000/api/v1.0/public/account/';
 
   private currentUserSubject: BehaviorSubject<PrivateUser>;
   public currentUser: Observable<PrivateUser>;
@@ -27,16 +25,16 @@ export class UserService {
   }
 
   saveCurrentUser(user: PrivateUser) {
-      console.log("saveCurrentUser->user_uuid=" + user.uuid);
+      // console.log("saveCurrentUser->user_uuid=" + user.uuid);
       // store user details and jwt token in local storage to keep user logged in between page refreshes
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
   }
 
   saveCurrentUserByData(user_uuid:string, username:string, alias:string) {
-    console.log("saveCurrentUserByData->user_uuid=" + user_uuid);
-    console.log("saveCurrentUserByData->username=" + username);
-    console.log("saveCurrentUserByData->alias=" + alias);
+    // console.log("saveCurrentUserByData->user_uuid=" + user_uuid);
+    // console.log("saveCurrentUserByData->username=" + username);
+    // console.log("saveCurrentUserByData->alias=" + alias);
     let user: PrivateUser = new PrivateUser()
     user.uuid = user_uuid;
     user.username = username;
@@ -49,12 +47,28 @@ export class UserService {
     localStorage.removeItem('currentUser');
   }
 
-  getCurrentUser() {
-    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/account/');
+  getMyAccount() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/account');
   }
 
-  getCurrentUserProfile() {
-    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/account/profile/');
+  getMyProfile() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/profile');
+  }
+
+  getMyPreferences() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/preferences');
+  }
+
+  getMyFriends() {
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/friends');
+  }
+
+  updateMyPassword(updatePassword: PrivateUpdatePassword) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/account/password', updatePassword);
+  }
+
+  updateMyEmail(updateUsername: PrivateUpdateUsername) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/account/username', updateUsername);
   }
 
   getPublicUsers() {
@@ -62,11 +76,7 @@ export class UserService {
   }
 
   getPublicUserDetail(user_uuid: string) {
-    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/user/details/' + user_uuid);
-  }
-
-  getMyFriends() {
-    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/friends/');
+    return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/public/user/profile/' + user_uuid);
   }
 
   // Implement a method to handle errors if any

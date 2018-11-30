@@ -4,13 +4,36 @@ export class PrivateUser {
     username: string;
 }
 
-
-export class PrivateUserProfile {
+export class PrivateUserAccount {
     user_uuid: string;
     alias: string;
     username: string;
     first_name: string;
     last_name: string;
+    formatted_name: string;
+}
+
+export class PrivateUserPreferences {
+    user_uuid: string;
+    alias: string;
+    username: string;
+    first_name: string;
+    last_name: string;
+    formatted_name: string;
+    is_private: boolean;
+    account_type: string;
+
+}
+
+export class PrivateUpdatePassword {
+    old_password: string;
+    new_password: string;
+}
+
+export class PrivateUpdateUsername {
+    old_username: string;
+    new_username: string;
+    password: string;
 }
 
 export class PublicUser {
@@ -19,10 +42,10 @@ export class PublicUser {
     alias: string;
 }
 
-export class PublicUserDetail {
+export class PublicUserProfile {
     user_uuid: string;
+    user_uuid_digest: string;
     alias: string;
-    username: string;
-    nick_name: string;
+
 }
 

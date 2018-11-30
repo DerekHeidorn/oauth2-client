@@ -14,11 +14,15 @@ import { MemberDetailComponent } from './components/member-detail/member-detail.
 import { ManagerDetailComponent } from './components/manager-detail/manager-detail.component';
 import { AuthCallbackComponent } from './components/auth/auth-callback.component';
 import { HomeComponent } from './components/home/home.component';
+import { ChangePasswordComponent } from './components/my/change-password/change-password.component';
+import { ChangeEmailComponent } from './components/my/change-email/change-email.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'oauth/callback', component: AuthCallbackComponent},
   { path: 'my/profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'my/changePassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
+  { path: 'my/changeEmail', component: ChangeEmailComponent, canActivate: [AuthGuard]},
   { path: 'my/friends', component: FriendsComponent, canActivate: [AuthGuard]},
   { path: 'my/groups', component: GroupsComponent, canActivate: [AuthGuard]},
   { path: 'my/preferences', component: PreferencesComponent, canActivate: [AuthGuard]},

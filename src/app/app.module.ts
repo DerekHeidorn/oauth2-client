@@ -29,6 +29,8 @@ import { SidebarComponent } from './components/common/sidebar/sidebar.component'
 import { PreferencesComponent } from './components/my/preferences/preferences.component';
 import { FriendsComponent } from './components/my/friends/friends.component';
 import { PublicGroupsComponent } from './components/public-groups/public-groups.component';
+import { ChangePasswordComponent } from './components/my/change-password/change-password.component';
+import { ChangeEmailComponent } from './components/my/change-email/change-email.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { PublicGroupsComponent } from './components/public-groups/public-groups.
     SidebarComponent,
     PreferencesComponent,
     FriendsComponent,
-    PublicGroupsComponent
+    PublicGroupsComponent,
+    ChangePasswordComponent,
+    ChangeEmailComponent
   ],
   imports: [
     BrowserModule,

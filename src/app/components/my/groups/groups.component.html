@@ -13,6 +13,7 @@
                       {{group.name}}
                     </a> 
                     - {{group.description}}
+                    <button (click)="unsubscribe(group.uuid, group.uuid_digest)">Unsubscribe</button>
                   </li>
                 </ul>
 

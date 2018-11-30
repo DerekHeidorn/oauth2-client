@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PrivateUserPreferences }  from '../../../models/user';
+import { UserService }  from '../../../services/user.service';
 
 @Component({
   selector: 'app-preferences',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreferencesComponent implements OnInit {
 
-  constructor() { }
+  preferences: PrivateUserPreferences;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getUserPreferences()
+  }
+
+ 
+  getUserPreferences(): void {
+    this.userService.getMyPreferences()
+      .subscribe(responseData => this.preferences = responseData.data);
   }
 
 }

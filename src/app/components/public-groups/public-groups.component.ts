@@ -15,6 +15,10 @@ export class PublicGroupsComponent implements OnInit {
   constructor(private groupService: GroupService) { }
 
   ngOnInit() {
+    this.getPublicGroups();
+  }
+
+  getPublicGroups() {
     this.groupService.getGroups()
       .subscribe((responseData: AppResponse) => {
         console.log("data=" + responseData.data)
@@ -22,11 +26,19 @@ export class PublicGroupsComponent implements OnInit {
         for(let i = 0; i < responseData.data.length; i++) {
           let g: PublicGroup = new PublicGroup()
           g.uuid = responseData.data[i].group_uuid;
+          g.uuid_digest = responseData.data[i].group_uuid_digest;
           g.name = responseData.data[i].group_name;
           g.description = responseData.data[i].group_de; 
           this.groups.push(g);
         }
-  });
+    });
+  }
 
+  subscribe(uuid: string, uuid_digest: string) {
+    this.groupService.subscribe(uuid, uuid_digest)
+    .subscribe((responseData: AppResponse) => {
+      console.log("data=" + responseData.data);
+      this.getPublicGroups();
+    });
   }
 }
