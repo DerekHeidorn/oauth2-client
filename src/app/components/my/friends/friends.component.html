@@ -11,9 +11,11 @@
             <div class="post">
                 <ul>
                     <li *ngFor="let friend of friends">
-                    <a routerLink="/user/detail/{{friend.user_uuid}}">
-                        {{friend.alias}}
-                    </a>
+                        <a routerLink="/user/detail/{{friend.user_uuid}}">
+                            {{friend.alias}}
+                        </a>
+                        - 
+                        <button (click)="unfriend(friend.user_uuid, friend.user_uuid_digest)">Remove Friend</button>
                     </li>
                 </ul>
 

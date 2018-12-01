@@ -30,4 +30,11 @@ export class PublicUsersComponent implements OnInit {
 
   }
 
+  friend(user_uuid: string, user_uuid_digest: string) {
+    this.userService.friendUser(user_uuid, user_uuid_digest)
+    .subscribe((responseData: AppResponse) => {
+      console.log("data=" + responseData.data);
+    });
+  }
+
 }

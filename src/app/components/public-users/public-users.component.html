@@ -12,6 +12,7 @@
             <a routerLink="/user/detail/{{user.user_uuid}}">
               {{user.alias}}
             </a>
+            - <button (click)="friend(user.user_uuid, user.user_uuid_digest)">Add Friend</button>
           </li>
         </ul>
       </div>

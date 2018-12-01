@@ -63,6 +63,14 @@ export class UserService {
     return this.http.get<any>('http://127.0.0.1:9000/api/v1.0/my/friends');
   }
 
+  friendUser(user_uuid: string, user_uuid_digest: string) {
+    return this.http.post<any>('http://127.0.0.1:9000/api/v1.0/my/friend/user/' + user_uuid + '/' + user_uuid_digest, null);
+  }
+
+  unfriendUser(user_uuid: string, user_uuid_digest: string) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/unfriend/user/' + user_uuid + '/' + user_uuid_digest, null);
+  }
+
   updateMyNames(toUpdate: PrivateUpdateNames) {
     return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/preferences/names', toUpdate);
   }
