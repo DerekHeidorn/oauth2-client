@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListItem, Parameters } from '../../models/common';
 import { ReportCriteria } from '../../models/reports';
-import { AppResponse } from '../../models/response';
+import { ApiResponse } from '../../models/response';
 import { ReportsService } from '../../services/reports.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit() {
     this.reportsService.getReportList()
-      .subscribe((responseData: AppResponse) => {
+      .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
         this.reportList = [];
         for(let i = 0; i < responseData.data.length; i++) {
@@ -58,7 +58,7 @@ export class ReportsComponent implements OnInit {
   getReportKey(reportCriteria: ReportCriteria) {
       
     this.reportsService.createReportKey(reportCriteria)
-      .subscribe((responseData: AppResponse) => {
+      .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
         if(reportCriteria.reportProcessType == "http") {
           let reportKey: string = null;

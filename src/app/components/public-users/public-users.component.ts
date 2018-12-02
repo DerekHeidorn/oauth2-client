@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicUser } from '../../models/user';
-import { AppResponse } from '../../models/response';
+import { ApiResponse } from '../../models/response';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -11,13 +11,13 @@ import { UserService } from '../../services/user.service';
 export class PublicUsersComponent implements OnInit {
 
   public users: PublicUser[] = [];
-  public apiResponse: AppResponse = new AppResponse();
+  public apiResponse: ApiResponse = new ApiResponse();
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getPublicUsers()
-      .subscribe((responseData: AppResponse) => {
+      .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
         this.users = []
         for(let i = 0; i < responseData.data.length; i++) {
@@ -33,7 +33,7 @@ export class PublicUsersComponent implements OnInit {
 
   friend(user_uuid: string, user_uuid_digest: string) {
     this.userService.friendUser(user_uuid, user_uuid_digest)
-    .subscribe((responseData: AppResponse) => {
+    .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
       this.apiResponse = responseData;
     });

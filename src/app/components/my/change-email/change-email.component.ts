@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrivateUpdateUsername } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
-import { AppResponse } from '../../../models/response';
+import { ApiResponse } from '../../../models/response';
 
 @Component({
   selector: 'app-change-email',
@@ -21,7 +21,7 @@ export class ChangeEmailComponent implements OnInit {
   }
 
   getMyAccount(): void {
-    this.userService.getMyAccount().subscribe((responseData: AppResponse) => {
+    this.userService.getMyAccount().subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
       this.oldEmail = responseData['data']['username'];
     });
@@ -33,7 +33,7 @@ export class ChangeEmailComponent implements OnInit {
     p.old_username = this.oldEmail;
     p.new_username = this.newEmail;
     p.password = this.password;
-    this.userService.updateMyEmail(p).subscribe((responseData: AppResponse) => {
+    this.userService.updateMyEmail(p).subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data)
     });
   }

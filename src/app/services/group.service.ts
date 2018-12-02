@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AppResponse } from '../models/response';
+import { ApiResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class GroupService {
 
   getGroups() {
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group")
+      .get<ApiResponse>("http://127.0.0.1:9001/api/v1.0/public/group")
       .pipe(
         catchError(this.handleError)
       );
@@ -21,7 +21,7 @@ export class GroupService {
 
   getMyGroups() {
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/my/groups")
+      .get<ApiResponse>("http://127.0.0.1:9001/api/v1.0/my/groups")
       .pipe(
         catchError(this.handleError)
       );
@@ -29,7 +29,7 @@ export class GroupService {
 
   getGroup(uuid: string) {
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group/detail/" + uuid)
+      .get<ApiResponse>("http://127.0.0.1:9001/api/v1.0/public/group/detail/" + uuid)
       .pipe(
         catchError(this.handleError)
       );
@@ -37,7 +37,7 @@ export class GroupService {
 
   subscribe(uuid: string, uuid_digest: string) {
     return this.http
-      .post<AppResponse>("http://127.0.0.1:9001/api/v1.0/my/subscribe/group/" + uuid + "/" + uuid_digest, null)
+      .post<ApiResponse>("http://127.0.0.1:9001/api/v1.0/my/subscribe/group/" + uuid + "/" + uuid_digest, null)
       .pipe(
         catchError(this.handleError)
       );
@@ -45,7 +45,7 @@ export class GroupService {
 
   unsubscribe(uuid: string, uuid_digest: string) {
     return this.http
-      .post<AppResponse>("http://127.0.0.1:9001/api/v1.0/my/unsubscribe/group/" + uuid + "/" + uuid_digest, null)
+      .post<ApiResponse>("http://127.0.0.1:9001/api/v1.0/my/unsubscribe/group/" + uuid + "/" + uuid_digest, null)
       .pipe(
         catchError(this.handleError)
       );

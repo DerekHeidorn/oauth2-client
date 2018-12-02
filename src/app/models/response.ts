@@ -1,4 +1,4 @@
-export class AppResponse {
+export class ApiResponse {
     global_info_msgs: any;
     global_warning_msgs: any;
     global_error_msgs: any;

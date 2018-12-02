@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AppResponse } from '../models/response';
+import { ApiResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class MemberService {
 
   getMember(group_uuid: string, user_uuid: string) {
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group/" + group_uuid
+      .get<ApiResponse>("http://127.0.0.1:9001/api/v1.0/public/group/" + group_uuid
                         + "/member/detail/" + user_uuid)
       .pipe(
         catchError(this.handleError)
@@ -23,7 +23,7 @@ export class MemberService {
 
   getManager(group_uuid: string, user_uuid: string) {
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9001/api/v1.0/public/group/" + group_uuid
+      .get<ApiResponse>("http://127.0.0.1:9001/api/v1.0/public/group/" + group_uuid
                         + "/manager/detail/" + user_uuid)
       .pipe(
         catchError(this.handleError)

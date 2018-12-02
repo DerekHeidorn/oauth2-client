@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { AppResponse } from '../models/response';
+import { ApiResponse } from '../models/response';
 import { throwError, Observable } from 'rxjs';
 import { ReportCriteria } from '../models/reports';
 
@@ -17,7 +17,7 @@ export class ReportsService {
 
   getReportList() {  // ListItem
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9002/api/v1.0/public/reports/list")
+      .get<ApiResponse>("http://127.0.0.1:9002/api/v1.0/public/reports/list")
       .pipe(
         catchError(this.handleError)
       );
@@ -33,7 +33,7 @@ export class ReportsService {
     let params:HttpParams = reportCriteria.serializeToHttpParams();
 
     return this.http
-      .post<AppResponse>("http://127.0.0.1:9002/api/v1.0/public/reports/create", reportCriteria)
+      .post<ApiResponse>("http://127.0.0.1:9002/api/v1.0/public/reports/create", reportCriteria)
       .pipe(
         catchError(this.handleError)
       );
@@ -48,7 +48,7 @@ export class ReportsService {
   getReportKey(reportCriteria: ReportCriteria) {
       
     this.createReportKey(reportCriteria)
-      .subscribe((responseData: AppResponse) => {
+      .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
         let reportKey: string = null;
         if (responseData.data && responseData.data.key) {
@@ -76,7 +76,7 @@ export class ReportsService {
     }
 
     return this.http
-      .get<AppResponse>("http://127.0.0.1:9002/api/v1.0/reports/download/" + key, {params})
+      .get<ApiResponse>("http://127.0.0.1:9002/api/v1.0/reports/download/" + key, {params})
       .pipe(
         catchError(this.handleError)
       );

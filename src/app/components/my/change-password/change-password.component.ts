@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrivateUpdatePassword } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
-import { AppResponse } from '../../../models/response';
+import { ApiResponse } from '../../../models/response';
 
 @Component({
   selector: 'app-change-password',
@@ -22,7 +22,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   getMyAccount(): void {
-    this.userService.getMyAccount().subscribe((responseData: AppResponse) => {
+    this.userService.getMyAccount().subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
       this.username = responseData['data']['username'];
     });
@@ -33,7 +33,7 @@ export class ChangePasswordComponent implements OnInit {
     let p = new PrivateUpdatePassword();
     p.old_password = this.oldPassword;
     p.new_password = this.newPassword;
-    this.userService.updateMyPassword(p).subscribe((responseData: AppResponse) => {
+    this.userService.updateMyPassword(p).subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data)
     });
   }

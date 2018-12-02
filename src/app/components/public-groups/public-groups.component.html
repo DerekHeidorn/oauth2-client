@@ -4,9 +4,9 @@
       <div id="content">
 
           <h2>Public Groups</h2>
+          <app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
 
           <div class="post">
-            <app-global-messages [appResponse]="apiResponse" ></app-global-messages>
 
             <ul>
               <li *ngFor="let group of groups">

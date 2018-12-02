@@ -1,12 +1,12 @@
-<div *ngIf="appResponse">
-    <div *ngIf="appResponse.global_info_msgs && appResponse.global_info_msgs.length > 0">
+<div *ngIf="apiResponse">
+    <div *ngIf="apiResponse.global_info_msgs && apiResponse.global_info_msgs.length > 0">
         <div class="msg-info">
             <div class="msg-info-contents">	
                 <table>
                     <tr style="vertical-align:middle;">
                         <td><img src="http://localhost:9000/static/images/icons/msg-information-48.png" alt="Success:" class="icon" /></td>
                         <td>
-                            <div *ngFor="let msg of appResponse.global_info_msgs">
+                            <div *ngFor="let msg of apiResponse.global_info_msgs">
                                     {{msg}}
                             </div> 
                         </td>
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div *ngIf="appResponse.global_warning_msgs && appResponse.global_warning_msgs.length > 0">
+    <div *ngIf="apiResponse.global_warning_msgs && apiResponse.global_warning_msgs.length > 0">
         <div class="msg-warning">
             <div class="msg-warning-contents">  	
                     
@@ -24,7 +24,7 @@
                     <tr style="vertical-align:middle;">
                         <td><img src="http://localhost:9000/static/images/icons/msg-warning-48.png" alt="Warning:" class="icon" /></td>
                         <td>
-                            <div *ngFor="let msg of appResponse.global_warning_msgs">
+                            <div *ngFor="let msg of apiResponse.global_warning_msgs">
                                     {{msg}}
                             </div> 
                         </td>
@@ -34,14 +34,14 @@
         </div>
     </div>    	
 
-    <div *ngIf="appResponse.global_error_msgs && appResponse.global_error_msgs.length > 0">
+    <div *ngIf="apiResponse.global_error_msgs && apiResponse.global_error_msgs.length > 0">
         <div class="msg-error">
             <div class="msg-error-contents">    	              
                 <table>
                     <tr style="vertical-align:middle;">
                         <td><img src="http://localhost:9000/static/images/icons/msg-error-48.png" alt="Error:" class="icon" /></td>
                         <td>
-                            <div *ngFor="let msg of appResponse.global_error_msgs">
+                            <div *ngFor="let msg of apiResponse.global_error_msgs">
                                 {{msg}}
                             </div>                         
                         </td>

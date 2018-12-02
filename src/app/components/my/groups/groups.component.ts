@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicGroup } from '../../../models/group';
-import { AppResponse } from '../../../models/response';
+import { ApiResponse } from '../../../models/response';
 import { GroupService } from '../../../services/group.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class GroupsComponent implements OnInit {
   getMyGroups() {
     this.groups = []
     this.groupService.getMyGroups()
-      .subscribe((responseData: AppResponse) => {
+      .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
         for(let i = 0; i < responseData.data.length; i++) {
           let g: PublicGroup = new PublicGroup()
@@ -35,7 +35,7 @@ export class GroupsComponent implements OnInit {
 
   unsubscribe(uuid, uuid_digest) {
     this.groupService.unsubscribe(uuid, uuid_digest)
-    .subscribe((responseData: AppResponse) => {
+    .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
       this.getMyGroups();
     });
