@@ -11,6 +11,7 @@ import { UserService } from '../../services/user.service';
 export class PublicUsersComponent implements OnInit {
 
   public users: PublicUser[] = [];
+  public apiResponse: AppResponse = new AppResponse();
 
   constructor(private userService: UserService) { }
 
@@ -34,6 +35,7 @@ export class PublicUsersComponent implements OnInit {
     this.userService.friendUser(user_uuid, user_uuid_digest)
     .subscribe((responseData: AppResponse) => {
       console.log("data=" + responseData.data);
+      this.apiResponse = responseData;
     });
   }
 

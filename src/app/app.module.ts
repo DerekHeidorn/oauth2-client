@@ -31,6 +31,7 @@ import { FriendsComponent } from './components/my/friends/friends.component';
 import { PublicGroupsComponent } from './components/public-groups/public-groups.component';
 import { ChangePasswordComponent } from './components/my/change-password/change-password.component';
 import { ChangeEmailComponent } from './components/my/change-email/change-email.component';
+import { GlobalMessagesComponent } from './components/common/global-messages/global-messages.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ChangeEmailComponent } from './components/my/change-email/change-email.
     FriendsComponent,
     PublicGroupsComponent,
     ChangePasswordComponent,
-    ChangeEmailComponent
+    ChangeEmailComponent,
+    GlobalMessagesComponent
   ],
   imports: [
     BrowserModule,

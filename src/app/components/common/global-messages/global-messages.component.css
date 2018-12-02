@@ -1,0 +1,42 @@
+.msg-info {
+	margin-bottom:4px;
+	background-color: #CCFFCC;
+	color: #008000;	
+	border: 2px solid #008000;
+	width:auto;	
+}
+
+.msg-info-contents{
+	font-family: Tahoma, Arial, Geneva, sans-serif;
+	font-size:10pt;  /*change to x-small to allow scaling*/
+	font-weight:normal;
+	padding:6px;
+}
+
+.msg-warning {
+	margin-bottom:4px;
+	background-color: #ffe60e;
+	color: #000000;	
+	border: 2px solid #000000;	
+	width:auto;	
+}
+
+.msg-warning-contents{
+	font-family: Tahoma, Arial, Geneva, sans-serif;
+	font-size:10pt;  /*change to x-small to allow scaling*/
+	font-weight:normal;
+	padding:6px;
+}
+
+.msg-error {
+	margin-bottom:4px;
+	background-color: #C1272D;
+	color: #FFFFFF;
+	width:auto;
+}
+.msg-error-contents{
+	font-family: Tahoma, Arial, Geneva, sans-serif;
+	font-size:10pt;  /*change to x-small to allow scaling*/
+	font-weight:normal;
+	padding:6px;
+}

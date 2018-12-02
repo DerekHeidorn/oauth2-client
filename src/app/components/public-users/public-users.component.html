@@ -6,7 +6,7 @@
       <h2>Public Users</h2>
   
       <div class="post">
-
+        <app-global-messages [appResponse]="apiResponse" ></app-global-messages>
         <ul>
           <li *ngFor="let user of users">
             <a routerLink="/user/detail/{{user.user_uuid}}">

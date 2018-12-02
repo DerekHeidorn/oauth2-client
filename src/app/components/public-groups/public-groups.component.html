@@ -6,16 +6,17 @@
           <h2>Public Groups</h2>
 
           <div class="post">
+            <app-global-messages [appResponse]="apiResponse" ></app-global-messages>
 
-          <ul>
-            <li *ngFor="let group of groups">
-              <a routerLink="/group/detail/{{group.uuid}}">
-                {{group.name}}
-              </a>
-              - {{group.description}}
-              <button (click)="subscribe(group.uuid, group.uuid_digest)">Subscribe</button>
-            </li>
-          </ul>
+            <ul>
+              <li *ngFor="let group of groups">
+                <a routerLink="/group/detail/{{group.uuid}}">
+                  {{group.name}}
+                </a>
+                - {{group.description}}
+                <button (click)="subscribe(group.uuid, group.uuid_digest)">Subscribe</button>
+              </li>
+            </ul>
 
       </div>
     </div>

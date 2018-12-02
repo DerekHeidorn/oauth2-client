@@ -11,6 +11,7 @@ import { GroupService } from '../../services/group.service';
 export class PublicGroupsComponent implements OnInit {
 
   public groups: PublicGroup[] = [];
+  public apiResponse: AppResponse = new AppResponse();
 
   constructor(private groupService: GroupService) { }
 
@@ -24,7 +25,9 @@ export class PublicGroupsComponent implements OnInit {
         console.log("data=" + responseData.data)
         this.groups = []
         for(let i = 0; i < responseData.data.length; i++) {
-          let g: PublicGroup = new PublicGroup()
+          let g: PublicGroup = new PublicGroup();
+          console.log("(*)responseData.global_info_msgs=" + responseData.global_info_msgs);
+          this.apiResponse = responseData;
           g.uuid = responseData.data[i].group_uuid;
           g.uuid_digest = responseData.data[i].group_uuid_digest;
           g.name = responseData.data[i].group_name;
