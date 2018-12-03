@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PublicUser } from '../../models/user';
 import { ApiResponse } from '../../models/response';
 import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-public-users',
@@ -13,7 +14,8 @@ export class PublicUsersComponent implements OnInit {
   public users: PublicUser[] = [];
   public apiResponse: ApiResponse = new ApiResponse();
 
-  constructor(private userService: UserService) { }
+  constructor(private toastr: ToastrService,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getPublicUsers()
@@ -36,6 +38,7 @@ export class PublicUsersComponent implements OnInit {
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
       this.apiResponse = responseData;
+      this.toastr.success('Hello world!', 'Toastr fun!');
     });
   }
 

@@ -1,8 +1,23 @@
+.msg-success {
+	margin-bottom:4px;
+	background-color: #51A351;
+	color: #FFFFFF;	
+	border: 2px solid #008000;
+	width:auto;	
+}
+
+.msg-success-contents{
+	font-family: Tahoma, Arial, Geneva, sans-serif;
+	font-size:10pt;  /*change to x-small to allow scaling*/
+	font-weight:normal;
+	padding:6px;
+}
+
 .msg-info {
 	margin-bottom:4px;
-	background-color: #CCFFCC;
-	color: #008000;	
-	border: 2px solid #008000;
+	background-color: #2F96B4;
+	color: #FFFFFF;	
+	border: 2px solid rgb(18, 55, 66);
 	width:auto;	
 }
 
@@ -15,7 +30,7 @@
 
 .msg-warning {
 	margin-bottom:4px;
-	background-color: #ffe60e;
+	background-color: #F89406;
 	color: #000000;	
 	border: 2px solid #000000;	
 	width:auto;	
@@ -30,7 +45,7 @@
 
 .msg-error {
 	margin-bottom:4px;
-	background-color: #C1272D;
+	background-color: #BD362F;
 	color: #FFFFFF;
 	width:auto;
 }

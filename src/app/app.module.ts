@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
@@ -34,6 +36,8 @@ import { ChangeEmailComponent } from './components/my/change-email/change-email.
 import { GlobalMessagesComponent } from './components/common/global-messages/global-messages.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,9 @@ import { GlobalMessagesComponent } from './components/common/global-messages/glo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [AuthenticationService, UserService, ReportsService, GroupService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

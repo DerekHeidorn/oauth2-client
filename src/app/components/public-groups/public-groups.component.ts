@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PublicGroup } from '../../models/group';
 import { ApiResponse } from '../../models/response';
 import { GroupService } from '../../services/group.service';
@@ -13,7 +14,8 @@ export class PublicGroupsComponent implements OnInit {
   public groups: PublicGroup[] = [];
   public apiResponse: ApiResponse = new ApiResponse();
 
-  constructor(private groupService: GroupService) { }
+  constructor(private toastr: ToastrService,
+              private groupService: GroupService) { }
 
   ngOnInit() {
     this.getPublicGroups();
@@ -41,6 +43,7 @@ export class PublicGroupsComponent implements OnInit {
     this.groupService.subscribe(uuid, uuid_digest)
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
+      this.toastr.success('Hello world!', 'Toastr fun!');
       this.getPublicGroups();
     });
   }
