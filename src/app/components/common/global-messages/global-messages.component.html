@@ -4,7 +4,7 @@
             <div class="msg-success-contents">	
                 <table>
                     <tr style="vertical-align:middle;">
-                        <td class="toast-success" style="background-size: 24px; background-position: 15px center;padding: 15px 15px 15px 50px; background-repeat: no-repeat;"></td>
+                        <td class="icon-success"></td>
                         <td>
                             <div *ngFor="let msg of apiResponse.global_success_msgs">
                                     {{msg}}
@@ -20,7 +20,7 @@
             <div class="msg-info-contents">	
                 <table>
                     <tr style="vertical-align:middle;">
-                        <td class="toast-info" style="background-size: 24px; background-position: 15px center;padding: 15px 15px 15px 50px; background-repeat: no-repeat;"></td>
+                        <td class="icon-info"></td>
                         <td>
                             <div *ngFor="let msg of apiResponse.global_info_msgs">
                                     {{msg}}
@@ -38,7 +38,7 @@
                     
                 <table>
                     <tr style="vertical-align:middle;">
-                            <td class="toast-warning" style="background-size: 24px; background-position: 15px center;padding: 15px 15px 15px 50px; background-repeat: no-repeat;"></td>
+                            <td class="icon-warning"></td>
                         <td>
                             <div *ngFor="let msg of apiResponse.global_warning_msgs">
                                     {{msg}}
@@ -55,7 +55,7 @@
             <div class="msg-error-contents">    	              
                 <table>
                     <tr style="vertical-align:middle;">
-                            <td class="toast-error" style="background-size: 24px; background-position: 15px center;padding: 15px 15px 15px 50px; background-repeat: no-repeat;"></td>
+                            <td class="icon-error"></td>
                         <td>
                             <div *ngFor="let msg of apiResponse.global_error_msgs">
                                 {{msg}}
