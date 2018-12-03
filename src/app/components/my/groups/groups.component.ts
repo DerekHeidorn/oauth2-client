@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PublicGroup } from '../../../models/group';
 import { ApiResponse } from '../../../models/response';
 import { GroupService } from '../../../services/group.service';
@@ -12,7 +13,8 @@ export class GroupsComponent implements OnInit {
 
   public groups: PublicGroup[] = [];
 
-  constructor(private groupService: GroupService) { }
+  constructor(private toastr: ToastrService,
+              private groupService: GroupService) { }
 
   ngOnInit() {
     this.getMyGroups();
@@ -33,10 +35,11 @@ export class GroupsComponent implements OnInit {
     });
   }
 
-  unsubscribe(uuid, uuid_digest) {
+  unsubscribe(group_name: string, uuid: string, uuid_digest: string) {
     this.groupService.unsubscribe(uuid, uuid_digest)
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
+      this.toastr.success('Successfully unsubscribed from "' + group_name + '" group.', 'Group');
       this.getMyGroups();
     });
   }

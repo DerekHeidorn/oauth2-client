@@ -8,18 +8,23 @@
 
           <div class="post">
 
-            <ul>
-              <li *ngFor="let group of groups">
-                <a routerLink="/group/detail/{{group.uuid}}">
-                  {{group.name}}
-                </a>
-                - {{group.description}}
-                <button (click)="subscribe(group.uuid, group.uuid_digest)">Subscribe</button>
-              </li>
-            </ul>
-
+            <table>
+              <tr *ngFor="let group of groups">
+                <td style="vertical-align: top;">
+                  <a routerLink="/group/detail/{{group.uuid}}">
+                    {{group.name}}
+                  </a>
+                </td>
+                <td style="vertical-align: top;">
+                  {{group.description}}
+                </td>
+                <td style="vertical-align: top;">
+                    <button (click)="subscribe(group.name, group.uuid, group.uuid_digest)">Subscribe</button>
+                </td>
+              </tr>
+            </table>
+        </div>
       </div>
-    </div>
   </div>
 
   <div style="clear: both;">&nbsp;</div>

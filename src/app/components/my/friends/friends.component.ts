@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PublicUser } from '../../../models/user';
 import { ApiResponse } from '../../../models/response';
 import { UserService } from '../../../services/user.service';
@@ -12,7 +13,8 @@ export class FriendsComponent implements OnInit {
 
 public friends: PublicUser[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private toastr: ToastrService,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.getMyFriends();
@@ -34,18 +36,12 @@ public friends: PublicUser[] = [];
     });
   }
 
-  unfriend(user_uuid: string, user_uuid_digest: string) {
+  unfriend(alias: string, user_uuid: string, user_uuid_digest: string) {
     this.userService.unfriendUser(user_uuid, user_uuid_digest)
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
-      this.friends = []
-      for(let i = 0; i < responseData.data.length; i++) {
-        let u: PublicUser = new PublicUser()
-        u.user_uuid = responseData.data[i].user_uuid;
-        u.user_uuid_digest = responseData.data[i].user_uuid_digest;
-        u.alias = responseData.data[i].alias;
-        this.friends.push(u);
-      }
+      this.toastr.success('Removed "' + alias + '" friend.', 'Friends');
+      this.getMyFriends();
     });
   }
 

@@ -9,17 +9,18 @@
             <h2>My Friends</h2>
 
             <div class="post">
-                <ul>
-                    <li *ngFor="let friend of friends">
+                <table>
+                    <tr *ngFor="let friend of friends">
+                        <td>
                         <a routerLink="/user/detail/{{friend.user_uuid}}">
                             {{friend.alias}}
                         </a>
-                        - 
-                        <button (click)="unfriend(friend.user_uuid, friend.user_uuid_digest)">Remove Friend</button>
-                    </li>
-                </ul>
-
-
+                        </td>
+                        <td>
+                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)">Remove Friend</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

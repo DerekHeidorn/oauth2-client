@@ -7,17 +7,18 @@
             <h2>My Groups</h2>
 
             <div class="post">
-                <ul>
-                  <li *ngFor="let group of groups">
-                    <a routerLink="/group/detail/{{group.uuid}}">
-                      {{group.name}}
-                    </a> 
-                    - {{group.description}}
-                    <button (click)="unsubscribe(group.uuid, group.uuid_digest)">Unsubscribe</button>
-                  </li>
-                </ul>
-
-
+                <table>
+                  <tr *ngFor="let group of groups">
+                    <td>
+                      <a routerLink="/group/detail/{{group.uuid}}">
+                        {{group.name}}
+                      </a> 
+                    </td>
+                    <td>
+                        <button (click)="unsubscribe(group.name, group.uuid, group.uuid_digest)">Unsubscribe</button>
+                    </td>
+                  </tr>
+                </table>
           </div>
       </div>
   </div>

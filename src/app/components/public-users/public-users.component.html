@@ -7,14 +7,18 @@
       <app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
   
       <div class="post">
-        <ul>
-          <li *ngFor="let user of users">
-            <a routerLink="/user/detail/{{user.user_uuid}}">
-              {{user.alias}}
-            </a>
-            - <button (click)="friend(user.user_uuid, user.user_uuid_digest)">Add Friend</button>
-          </li>
-        </ul>
+        <table>
+          <tr *ngFor="let user of users">
+            <td>
+              <a routerLink="/user/detail/{{user.user_uuid}}">
+                {{user.alias}}
+              </a>
+            </td>
+            <td>
+              <button (click)="friend(user.alias, user.user_uuid, user.user_uuid_digest)">Add Friend</button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

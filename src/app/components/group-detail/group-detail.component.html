@@ -1,7 +1,9 @@
 <span *ngIf="detail && detail.group">
+    <app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
+
     <h2>{{detail.group.name}}</h2>
 
-    <p><button type="submit">Subscribe</button></p>
+    <p><button type="button" (click)="subscribe(detail.group.name, detail.group.uuid, detail.group.uuid_digest)">Subscribe</button></p>
 
     <p>{{detail.group.description}}</p>
   

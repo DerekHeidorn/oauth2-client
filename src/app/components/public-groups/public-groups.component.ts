@@ -39,11 +39,11 @@ export class PublicGroupsComponent implements OnInit {
     });
   }
 
-  subscribe(uuid: string, uuid_digest: string) {
+  subscribe(group_name:string, uuid: string, uuid_digest: string) {
     this.groupService.subscribe(uuid, uuid_digest)
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
-      this.toastr.success('Hello world!', 'Toastr fun!');
+      this.toastr.success('Subscribed to "' + group_name + '" group successfully.', 'Group');
       this.getPublicGroups();
     });
   }

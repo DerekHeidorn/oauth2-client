@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PublicUserProfile } from '../../models/user';
 import { PublicGroup, PublicGroupDetail } from '../../models/group';
 import { GroupService } from '../../services/group.service';
+import { ApiResponse } from '../../models/response';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -13,10 +14,13 @@ import { Location } from '@angular/common';
 export class GroupDetailComponent implements OnInit {
 
   public detail: PublicGroupDetail = new PublicGroupDetail();
+  public apiResponse: ApiResponse = new ApiResponse();
 
   constructor(private groupService: GroupService,
-    private route: ActivatedRoute,
-    private location: Location) { }
+              private route: ActivatedRoute,
+              private location: Location) { 
+
+  }
 
   ngOnInit() {
     this.getGroup()
@@ -33,6 +37,7 @@ export class GroupDetailComponent implements OnInit {
           this.detail.activeMembers = new Array();
           
           this.detail.group.uuid = responseData.data.group.group_uuid;
+          this.detail.group.uuid_digest = responseData.data.group.group_uuid_digest;
           this.detail.group.name = responseData.data.group.group_name;
           this.detail.group.description = responseData.data.group.group_de; 
 
@@ -68,6 +73,13 @@ export class GroupDetailComponent implements OnInit {
         });    
   }
 
-
+  subscribe(group_name:string, uuid: string, uuid_digest: string) {
+    this.groupService.subscribe(uuid, uuid_digest)
+    .subscribe((responseData: ApiResponse) => {
+      console.log("data=" + responseData.data);
+      this.apiResponse = responseData;
+      this.getGroup();
+    });
+  }
 
 }

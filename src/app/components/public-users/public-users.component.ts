@@ -33,12 +33,12 @@ export class PublicUsersComponent implements OnInit {
 
   }
 
-  friend(user_uuid: string, user_uuid_digest: string) {
+  friend(alias: string, user_uuid: string, user_uuid_digest: string) {
     this.userService.friendUser(user_uuid, user_uuid_digest)
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
       this.apiResponse = responseData;
-      this.toastr.success('Hello world!', 'Toastr fun!');
+      this.toastr.success('Users', 'Sent a friend request to "' + alias + '".');
     });
   }
 
