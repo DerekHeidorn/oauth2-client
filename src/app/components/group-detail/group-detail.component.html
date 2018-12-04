@@ -3,8 +3,6 @@
 
     <h2>{{detail.group.name}}</h2>
 
-    <p><button type="button" (click)="subscribe(detail.group.name, detail.group.uuid, detail.group.uuid_digest)">Subscribe</button></p>
-
     <p>{{detail.group.description}}</p>
   
     <h4>Managers</h4>
@@ -24,7 +22,13 @@
         </a>
       </li>
     </ul>
-  </span>
+
+  <p>
+    <span *ngIf="!detail.group.subscribed">
+        <button (click)="subscribe(detail.group.name, detail.group.uuid, detail.group.uuid_digest)" title="Subscribe to Group"><span class="icon_group_subscribe"></span></button>
+    </span> 
+  </p>
+</span>
   
     
   

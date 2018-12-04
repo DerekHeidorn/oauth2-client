@@ -1,3 +1,10 @@
 <h3>User Details</h3>
 
-<span>Alias: </span>{{user.alias}}<br/>
+<app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
+
+<p><span>Alias: </span>{{user.alias}}</p>
+<p>
+    <span *ngIf="!user.is_friend">
+        <button (click)="friend(user.alias, user.user_uuid, user.user_uuid_digest)" title="Add Friend"><span class="icon_person_add"></span></button>
+    </span>
+</p>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PublicUser } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { ApiResponse } from '../../models/response';
 
 @Component({
   selector: 'app-public-user-detail',
@@ -11,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class PublicUserDetailComponent implements OnInit {
 
   public user: PublicUser = new PublicUser();
+
+  public apiResponse: ApiResponse = new ApiResponse();
 
   constructor(private userService: UserService,
               private route: ActivatedRoute) { }
@@ -28,9 +31,19 @@ export class PublicUserDetailComponent implements OnInit {
           this.user = new PublicUser();
           
           this.user.user_uuid = responseData.data.user_uuid;
+          this.user.user_uuid_digest = responseData.data.user_uuid_digest;
           this.user.alias = responseData.data.alias;
 
         });    
+  }
+
+  friend(alias: string, user_uuid: string, user_uuid_digest: string) {
+    this.userService.friendUser(user_uuid, user_uuid_digest)
+    .subscribe((responseData: ApiResponse) => {
+      console.log("data=" + responseData.data);
+      this.apiResponse = responseData;
+      this.getPublicUser();
+    });
   }
 
 }
