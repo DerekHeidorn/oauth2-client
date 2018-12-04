@@ -19,7 +19,9 @@
                   {{group.description}}
                 </td>
                 <td style="vertical-align: top;">
-                    <button (click)="subscribe(group.name, group.uuid, group.uuid_digest)" title="Subscribe to Group"><span class="icon_group_subscribe"></span></button>
+                    <span *ngIf="!group.subscribed">
+                        <button (click)="subscribe(group.name, group.uuid, group.uuid_digest)" title="Subscribe to Group"><span class="icon_group_subscribe"></span></button>
+                    </span>  
                 </td>
               </tr>
             </table>

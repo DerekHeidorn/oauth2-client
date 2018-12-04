@@ -5,6 +5,7 @@ export class PublicGroup {
     uuid_digest: string;
     name: string;
     description: string;
+    subscribed: boolean;
   }
 
   export class PublicGroupDetail {

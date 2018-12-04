@@ -49,6 +49,7 @@ export class PublicUser {
     user_uuid: string;
     user_uuid_digest: string;
     alias: string;
+    is_friend: boolean;
 }
 
 export class PublicUserProfile {

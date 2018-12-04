@@ -4,7 +4,6 @@
     <div id="content">
   
       <h2>Public Users</h2>
-      <app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
   
       <div class="post">
         <table>
@@ -15,7 +14,9 @@
               </a>
             </td>
             <td>
-              <button (click)="friend(user.alias, user.user_uuid, user.user_uuid_digest)" title="Add Friend"><span class="icon_person_add"></span></button>
+              <span *ngIf="!user.is_friend">
+                <button (click)="friend(user.alias, user.user_uuid, user.user_uuid_digest)" title="Add Friend"><span class="icon_person_add"></span></button>
+              </span>
             </td>
           </tr>
         </table>

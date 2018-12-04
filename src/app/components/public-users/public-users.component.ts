@@ -12,12 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 export class PublicUsersComponent implements OnInit {
 
   public users: PublicUser[] = [];
-  public apiResponse: ApiResponse = new ApiResponse();
 
   constructor(private toastr: ToastrService,
               private userService: UserService) { }
 
   ngOnInit() {
+    this.getPublicUsers();
+
+  }
+
+  getPublicUsers() {
     this.userService.getPublicUsers()
       .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
@@ -27,9 +31,10 @@ export class PublicUsersComponent implements OnInit {
           u.user_uuid = responseData.data[i].user_uuid;
           u.user_uuid_digest = responseData.data[i].user_uuid_digest;
           u.alias = responseData.data[i].alias;
+          u.is_friend = responseData.data[i].is_friend;
           this.users.push(u);
         }
-  });
+    });
 
   }
 
@@ -37,8 +42,8 @@ export class PublicUsersComponent implements OnInit {
     this.userService.friendUser(user_uuid, user_uuid_digest)
     .subscribe((responseData: ApiResponse) => {
       console.log("data=" + responseData.data);
-      this.apiResponse = responseData;
       this.toastr.success('Users', 'Sent a friend request to "' + alias + '".');
+      this.getPublicUsers();
     });
   }
 

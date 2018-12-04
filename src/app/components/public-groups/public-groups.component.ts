@@ -34,6 +34,7 @@ export class PublicGroupsComponent implements OnInit {
           g.uuid_digest = responseData.data[i].group_uuid_digest;
           g.name = responseData.data[i].group_name;
           g.description = responseData.data[i].group_de; 
+          g.subscribed = responseData.data[i].subscribed; 
           this.groups.push(g);
         }
     });
