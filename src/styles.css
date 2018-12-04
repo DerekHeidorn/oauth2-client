@@ -403,3 +403,21 @@ span.icon_person_remove {
     height: 24px;
     width: 24px;
 }
+
+span.icon_group_subscribe {
+    background: url('http://localhost:9000/static/images/icons/group_add.svg') no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}
+
+span.icon_group_unsubscribe {
+    background: url('http://localhost:9000/static/images/icons/remove.svg') no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}

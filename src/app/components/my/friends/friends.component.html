@@ -8,36 +8,54 @@
 
             <h2>My Friends</h2>
 
-            <div class="post">
+            <div class="post" *ngIf="pending_friend_requests != null && pending_friend_requests.length > 0">
+                    <h3>Your friend Request to other people</h3>
+                    <table>
+                        <tr *ngFor="let friend of pending_friend_requests">
+                            <td>
+                                <a routerLink="/user/detail/{{friend.user_uuid}}">
+                                    {{friend.alias}}
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            <div class="post" *ngIf="pending_friends != null && pending_friends.length > 0">
+                <h3>Pending</h3>
                 <table>
                     <tr *ngFor="let friend of pending_friends">
                         <td>
-                        <a routerLink="/user/detail/{{friend.user_uuid}}">
-                            {{friend.alias}}
-                        </a>
+                            <a routerLink="/user/detail/{{friend.user_uuid}}">
+                                {{friend.alias}}
+                            </a>
                         </td>
                         <td>
-                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Accept Friend"><span class="icon_person_accept"></span></button>
-                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Deny Friend"><span class="icon_person_remove"></span></button>
+                            <button (click)="acceptFriendRequest(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Accept Friend"><span class="icon_person_accept"></span></button>
+                            <button (click)="denyFriendRequest(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Deny Friend"><span class="icon_person_remove"></span></button>
                         </td>
                     </tr>
                 </table>
             </div>
 
-            <div class="post">
-                    <table>
-                        <tr *ngFor="let friend of accepted_friends">
-                            <td>
+            <div class="post" *ngIf="accepted_friends != null && accepted_friends.length > 0">
+                <h3>Accepted</h3>
+                <table>
+                    <tr *ngFor="let friend of accepted_friends">
+                        <td>
                             <a routerLink="/user/detail/{{friend.user_uuid}}">
                                 {{friend.alias}}
                             </a>
-                            </td>
-                            <td>
-                                <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Remove Friend"><span class="icon_person_remove"></span></button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                        </td>
+                        <td>
+                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Remove Friend"><span class="icon_person_remove"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="post" *ngIf="(pending_friend_requests == null || pending_friend_requests.length == 0) && (pending_friends == null || pending_friends.length == 0) && (accepted_friends == null || accepted_friends.length == 0)">
+                <p>No friends found.</p>
+            </div>
         </div>
     </div>
 

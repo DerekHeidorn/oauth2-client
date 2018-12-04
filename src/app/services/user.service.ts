@@ -67,6 +67,14 @@ export class UserService {
     return this.http.post<any>('http://127.0.0.1:9000/api/v1.0/my/friend/user/' + user_uuid + '/' + user_uuid_digest, null);
   }
 
+  acceptFriendRequest(user_uuid: string, user_uuid_digest: string) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/friend/accept/user/' + user_uuid + '/' + user_uuid_digest, null);
+  }
+
+  denyFriendRequest(user_uuid: string, user_uuid_digest: string) {
+    return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/friend/deny/user/' + user_uuid + '/' + user_uuid_digest, null);
+  }
+
   unfriendUser(user_uuid: string, user_uuid_digest: string) {
     return this.http.put<any>('http://127.0.0.1:9000/api/v1.0/my/unfriend/user/' + user_uuid + '/' + user_uuid_digest, null);
   }

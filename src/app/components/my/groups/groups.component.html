@@ -6,7 +6,7 @@
         <div id="content">
             <h2>My Groups</h2>
 
-            <div class="post">
+            <div class="post" *ngIf="(groups != null && groups.length > 0)">
                 <table>
                   <tr *ngFor="let group of groups">
                     <td>
@@ -15,10 +15,13 @@
                       </a> 
                     </td>
                     <td>
-                        <button (click)="unsubscribe(group.name, group.uuid, group.uuid_digest)">Unsubscribe</button>
+                        <button (click)="unsubscribe(group.name, group.uuid, group.uuid_digest)" title="Unsubscribe from Group"><span class="icon_group_unsubscribe"></span></button>                        
                     </td>
                   </tr>
                 </table>
+          </div>
+          <div class="post" *ngIf="(groups != null || groups.length == 0)">
+              <p>No groups found.</p>
           </div>
       </div>
   </div>
