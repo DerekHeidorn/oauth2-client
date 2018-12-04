@@ -386,6 +386,15 @@ span.icon_person_add {
     width: 24px;
 }
 
+span.icon_person_accept {
+    background: url('http://localhost:9000/static/images/icons/person_checked.svg') no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}
+
 span.icon_person_remove {
     background: url('http://localhost:9000/static/images/icons/person_remove.svg') no-repeat top left;
     background-size: contain;

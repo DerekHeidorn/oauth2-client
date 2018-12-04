@@ -10,18 +10,34 @@
 
             <div class="post">
                 <table>
-                    <tr *ngFor="let friend of friends">
+                    <tr *ngFor="let friend of pending_friends">
                         <td>
                         <a routerLink="/user/detail/{{friend.user_uuid}}">
                             {{friend.alias}}
                         </a>
                         </td>
                         <td>
-                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Remove Friend"><span class="icon_person_remove"></span></button>
+                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Accept Friend"><span class="icon_person_accept"></span></button>
+                            <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Deny Friend"><span class="icon_person_remove"></span></button>
                         </td>
                     </tr>
                 </table>
             </div>
+
+            <div class="post">
+                    <table>
+                        <tr *ngFor="let friend of accepted_friends">
+                            <td>
+                            <a routerLink="/user/detail/{{friend.user_uuid}}">
+                                {{friend.alias}}
+                            </a>
+                            </td>
+                            <td>
+                                <button (click)="unfriend(friend.alias, friend.user_uuid, friend.user_uuid_digest)" title="Remove Friend"><span class="icon_person_remove"></span></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
         </div>
     </div>
 
