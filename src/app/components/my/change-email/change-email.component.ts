@@ -13,6 +13,9 @@ export class ChangeEmailComponent implements OnInit {
   public oldEmail: string = null;
   public newEmail: string = null;
   public password: string = null;
+  public is_saved: boolean = false;
+
+  public apiResponse: ApiResponse = new ApiResponse();
 
   constructor(private userService: UserService) { }
 
@@ -28,13 +31,15 @@ export class ChangeEmailComponent implements OnInit {
 
   }
 
-  updatePassword() {
+  updateEmail() {
     let p = new PrivateUpdateUsername();
     p.old_username = this.oldEmail;
     p.new_username = this.newEmail;
     p.password = this.password;
     this.userService.updateMyEmail(p).subscribe((responseData: ApiResponse) => {
-      console.log("data=" + responseData.data)
+      console.log("data=" + responseData.data);
+      this.apiResponse = responseData;
+      this.is_saved = true;
     });
   }
 

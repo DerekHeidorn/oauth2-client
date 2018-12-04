@@ -14,6 +14,9 @@ export class ChangePasswordComponent implements OnInit {
   public oldPassword: string = null;
   public newPassword: string = null;
   public repeatPassword: string = null;
+  public is_saved: boolean = false;
+
+  public apiResponse: ApiResponse = new ApiResponse();
 
   constructor(private userService: UserService) { }
 
@@ -34,7 +37,9 @@ export class ChangePasswordComponent implements OnInit {
     p.old_password = this.oldPassword;
     p.new_password = this.newPassword;
     this.userService.updateMyPassword(p).subscribe((responseData: ApiResponse) => {
-      console.log("data=" + responseData.data)
+      console.log("data=" + responseData.data);
+      this.apiResponse = responseData;
+      this.is_saved = true;
     });
   }
 

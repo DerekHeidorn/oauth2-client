@@ -3,38 +3,52 @@
     <div id="page-bgbtm">
       <div id="content">
     
-        <h2>Reports</h2>
+        <h2>Change Email</h2>
+
+        <app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
     
         <div class="post">
+            <div *ngIf="is_saved">
+                <table>
+                    <tr>
+                        <td>Current Email Address:</td>
+                        <td>{{newEmail}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a routerLink="/my/preferences">Back to Preferences</a></td>
+                    </tr>
+                </table>
+            </div>
 
-<form (ngSubmit)="updatePassword()">
-  <table>
-      <tr>
-          <td>Current Email Address:</td>
-          <td>{{oldEmail}}</td>
-        </tr>
-    <tr>
-        <td>New Email Address:</td>
-        <td><input type="text" [(ngModel)]="newEmail" name="newEmail" /></td>
-    </tr>
+            <div *ngIf="!is_saved">
+                <form (ngSubmit)="updateEmail()">
+                    <table>
+                        <tr>
+                            <td>Current Email Address:</td>
+                            <td>{{oldEmail}}</td>
+                            </tr>
+                        <tr>
+                            <td>New Email Address:</td>
+                            <td><input type="text" [(ngModel)]="newEmail" name="newEmail" /></td>
+                        </tr>
 
-    <tr>
-      <td></td>
-      <td>To confirm this operation please provide your current password</td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td><input type="password" [(ngModel)]="password" name="password" /></td>
-    </tr>
-    <tr style="text-align:center;">
-        <td colspan="2">
-            <button type="submit">Save</button> &nbsp;  
-            <a routerLink="/my/preferences">Cancel</a>
-        </td>
-      </tr>
-  </table>
-</form>
-
+                        <tr>
+                        <td></td>
+                        <td>To confirm this operation please provide your current password</td>
+                        </tr>
+                        <tr>
+                        <td>Password:</td>
+                        <td><input type="password" [(ngModel)]="password" name="password" /></td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td colspan="2">
+                                <button type="submit">Save</button> &nbsp;  
+                                <a routerLink="/my/preferences">Cancel</a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
 </div>
