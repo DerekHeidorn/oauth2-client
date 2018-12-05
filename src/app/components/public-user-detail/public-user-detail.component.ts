@@ -33,6 +33,7 @@ export class PublicUserDetailComponent implements OnInit {
           this.user.user_uuid = responseData.data.user_uuid;
           this.user.user_uuid_digest = responseData.data.user_uuid_digest;
           this.user.alias = responseData.data.alias;
+          this.user.is_friend = responseData.data.is_friend;
 
         });    
   }
