@@ -11,6 +11,8 @@ import { ReportsService } from '../../services/reports.service';
 })
 export class ReportsComponent implements OnInit {
 
+  public apiResponse: ApiResponse = new ApiResponse();
+
   public selectedReport: String = null;
   public selectedReportProcessType: String = "http";
   public selectedReportOutputType: String = "pdf";
@@ -60,6 +62,8 @@ export class ReportsComponent implements OnInit {
     this.reportsService.createReportKey(reportCriteria)
       .subscribe((responseData: ApiResponse) => {
         console.log("data=" + responseData.data)
+        this.apiResponse = responseData;
+        
         if(reportCriteria.reportProcessType == "http") {
           let reportKey: string = null;
           console.log("responseData.data.key=" + responseData.data.key)
@@ -68,8 +72,9 @@ export class ReportsComponent implements OnInit {
             let externalUrl:string = this.reportsService.getReportUrlWithKey(reportCriteria, reportKey);
             this.goToUrl(externalUrl)
           }
-        } else {
-          console.log("Email sent? ... do nothing")
+        } else if(reportCriteria.reportProcessType == "email") {
+          console.log("Email sent?" + responseData.global_success_msgs)
+          
         }
 
     });

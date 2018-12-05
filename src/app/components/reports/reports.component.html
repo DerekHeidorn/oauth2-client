@@ -4,9 +4,9 @@
           <div id="content">
         
             <h2>Reports</h2>
-        
-            <div class="post">
 
+            <div class="post">
+                <app-global-messages [apiResponse]="apiResponse" ></app-global-messages>
 <form (ngSubmit)="queryReport()">
     <p>
         <select name="selectedReport" [(ngModel)]="selectedReport">
