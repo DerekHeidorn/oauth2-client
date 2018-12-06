@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicUserProfile } from '../../models/user';
-import { PublicGroup, PublicGroupDetail } from '../../models/group';
-import { GroupService } from '../../services/group.service';
-import { ApiResponse } from '../../models/response';
+import { PublicUserProfile } from '../../../models/user';
+import { PublicGroup, PublicGroupDetail } from '../../../models/group';
+import { GroupService } from '../../../services/group.service';
+import { ApiResponse } from '../../../models/response';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 

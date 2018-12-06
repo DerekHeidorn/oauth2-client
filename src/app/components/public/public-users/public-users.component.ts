@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicUser } from '../../models/user';
-import { ApiResponse } from '../../models/response';
-import { UserService } from '../../services/user.service';
+import { PublicUser } from '../../../models/user';
+import { ApiResponse } from '../../../models/response';
+import { UserService } from '../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

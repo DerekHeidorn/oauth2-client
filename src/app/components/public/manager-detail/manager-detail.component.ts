@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Manager } from '../../models/member';
-import { MemberService } from '../../services/member.service';
+import { Manager } from '../../../models/member';
+import { MemberService } from '../../../services/member.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

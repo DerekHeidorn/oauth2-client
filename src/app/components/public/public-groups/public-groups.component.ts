@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { PublicGroup } from '../../models/group';
-import { ApiResponse } from '../../models/response';
-import { GroupService } from '../../services/group.service';
+import { PublicGroup } from '../../../models/group';
+import { ApiResponse } from '../../../models/response';
+import { GroupService } from '../../../services/group.service';
 
 @Component({
   selector: 'app-public-groups',

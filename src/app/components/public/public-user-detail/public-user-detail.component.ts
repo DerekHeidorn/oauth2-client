@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicUser } from '../../models/user';
-import { UserService } from '../../services/user.service';
+import { PublicUser } from '../../../models/user';
+import { UserService } from '../../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { ApiResponse } from '../../models/response';
+import { ApiResponse } from '../../../models/response';
 
 @Component({
   selector: 'app-public-user-detail',
